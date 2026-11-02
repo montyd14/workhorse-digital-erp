@@ -6,6 +6,7 @@ import { poolService } from "./pool-service";
 import { hvacPlumbing } from "./hvac-plumbing";
 import { junkRemoval } from "./junk-removal";
 import { mobileDetailing } from "./mobile-detailing";
+import { cleaningProperty } from "./cleaning-property";
 
 /**
  * Adding an industry = add a file in this folder and list it here.
@@ -19,6 +20,7 @@ export const industries: Industry[] = [
   hvacPlumbing,
   junkRemoval,
   mobileDetailing,
+  cleaningProperty,
 ].sort((a, b) => a.priority - b.priority);
 
 export function getIndustry(slug: string): Industry | undefined {
