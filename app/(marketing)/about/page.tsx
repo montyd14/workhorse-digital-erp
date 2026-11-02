@@ -100,7 +100,7 @@ export default function AboutPage() {
                 {i + 1}
               </span>
               <div>
-                <h3 className="text-xl">{v.title}</h3>
+                <h3 className="text-xl text-brand-text">{v.title}</h3>
                 <p className="mt-2 leading-relaxed text-ink-soft">{v.body}</p>
               </div>
             </li>
