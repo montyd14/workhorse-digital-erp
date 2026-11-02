@@ -80,14 +80,19 @@ export default function AboutPage() {
       <Section tone="cream">
         <Eyebrow>How we work</Eyebrow>
         <H2>Four rules we do not break.</H2>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          {values.map((v) => (
-            <div key={v.title} className="border-t-4 border-brand pt-4">
-              <h3 className="text-xl">{v.title}</h3>
-              <p className="mt-2 text-ink-soft">{v.body}</p>
-            </div>
+        <ol className="mt-10 grid gap-8 sm:grid-cols-2">
+          {values.map((v, i) => (
+            <li key={v.title} className="flex gap-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-ink font-heading text-lg font-extrabold text-cream">
+                {i + 1}
+              </span>
+              <div>
+                <h3 className="text-xl">{v.title}</h3>
+                <p className="mt-1.5 text-ink-soft">{v.body}</p>
+              </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </Section>
 
       <FinalCta />
