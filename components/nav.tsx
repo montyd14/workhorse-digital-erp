@@ -1,23 +1,38 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Logo } from "./logo";
 import { nav, site, telHref } from "@/lib/site";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-cream/95 backdrop-blur">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 sm:px-6">
         <Logo />
 
         <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
-          {nav.primary.map((item) => (
-            <Link key={item.href} href={item.href} className="text-sm font-semibold text-ink hover:text-brand">
-              {item.label}
-            </Link>
-          ))}
+          {nav.primary.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                className={`relative py-1 text-sm font-semibold transition-colors hover:text-brand-text ${
+                  active
+                    ? "text-brand-text after:absolute after:-bottom-0.5 after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-brand"
+                    : "text-ink"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -64,17 +79,23 @@ export function Nav() {
       {open && (
         <nav id="mobile-nav" aria-label="Mobile" className="border-t border-line bg-cream md:hidden">
           <ul className="mx-auto flex max-w-6xl flex-col px-4 py-3 sm:px-6">
-            {nav.primary.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="block py-3 text-base font-semibold text-ink"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {nav.primary.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    aria-current={active ? "page" : undefined}
+                    className={`block border-l-4 py-3 pl-3 text-base font-semibold ${
+                      active ? "border-brand text-brand-text" : "border-transparent text-ink"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
             <li>
               <Link href={nav.login.href} onClick={() => setOpen(false)} className="flex items-center gap-2 py-3 text-base font-semibold text-ink-soft">
                 <LockIcon />
