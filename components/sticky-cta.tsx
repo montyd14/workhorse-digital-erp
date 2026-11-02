@@ -21,7 +21,7 @@ export function StickyCta() {
         )}
         <Link
           href="/free-build"
-          className="flex flex-1 items-center justify-center rounded-md bg-brand px-3 py-3 text-sm font-bold text-white"
+          className="flex flex-1 items-center justify-center rounded-md bg-brand-text px-3 py-3 text-sm font-bold text-white"
         >
           Get Your Free Build
         </Link>

@@ -37,7 +37,7 @@ export function Nav() {
           )}
           <Link
             href={nav.cta.href}
-            className="hidden rounded-md bg-brand px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-dark md:inline-flex"
+            className="hidden rounded-md bg-brand-text px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-dark md:inline-flex"
           >
             {nav.cta.label}
           </Link>
@@ -72,7 +72,7 @@ export function Nav() {
               <Link
                 href={nav.cta.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-md bg-brand px-4 py-3 text-center text-base font-bold text-white"
+                className="block rounded-md bg-brand-text px-4 py-3 text-center text-base font-bold text-white"
               >
                 {nav.cta.label}
               </Link>

@@ -46,8 +46,8 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         ]}
       />
       <Section tone="dark" className="pb-12">
-        <Breadcrumbs items={crumbs} />
-        <Eyebrow className="mt-6">{service.shortName}</Eyebrow>
+        <Breadcrumbs items={crumbs} onDark />
+        <Eyebrow className="mt-6 text-brand-text-on-dark">{service.shortName}</Eyebrow>
         <H1>{service.headline}</H1>
         <Lead className="text-cream/85">{service.intro}</Lead>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">

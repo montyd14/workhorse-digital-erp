@@ -33,7 +33,7 @@ export default function ContactPage() {
               <dl className="mt-10 space-y-5">
                 {telHref && (
                   <div>
-                    <dt className="text-xs font-bold uppercase tracking-[0.18em] text-brand">Phone</dt>
+                    <dt className="text-xs font-bold uppercase tracking-[0.18em] text-brand-text">Phone</dt>
                     <dd className="mt-1 text-xl font-semibold">
                       <a href={telHref} className="hover:text-brand">
                         {site.phoneDisplay}
@@ -42,7 +42,7 @@ export default function ContactPage() {
                   </div>
                 )}
                 <div>
-                  <dt className="text-xs font-bold uppercase tracking-[0.18em] text-brand">Email</dt>
+                  <dt className="text-xs font-bold uppercase tracking-[0.18em] text-brand-text">Email</dt>
                   <dd className="mt-1 text-xl font-semibold">
                     <a href={`mailto:${site.email}`} className="hover:text-brand">
                       {site.email}
@@ -50,7 +50,7 @@ export default function ContactPage() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-xs font-bold uppercase tracking-[0.18em] text-brand">Service area</dt>
+                  <dt className="text-xs font-bold uppercase tracking-[0.18em] text-brand-text">Service area</dt>
                   <dd className="mt-1 text-ink-soft">Based in {site.serviceArea.locality}. Working with businesses nationwide.</dd>
                 </div>
               </dl>

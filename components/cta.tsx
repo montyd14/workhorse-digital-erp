@@ -9,10 +9,10 @@ export function FinalCta({
   body?: string;
 }) {
   return (
-    <section className="bg-brand py-16 text-white sm:py-20">
+    <section className="bg-brand-text py-16 text-cream sm:py-20">
       <Container className="text-center">
         <h2 className="mx-auto max-w-3xl text-3xl sm:text-4xl">{title}</h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90">{body}</p>
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-cream">{body}</p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <Button href={nav.cta.href} variant="secondary" size="lg">
             {nav.cta.label}

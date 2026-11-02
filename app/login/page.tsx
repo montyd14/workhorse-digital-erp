@@ -39,7 +39,7 @@ export default function LoginPage() {
         )}
         <p className="mt-6 text-sm text-cream/60">
           Not a client yet?{" "}
-          <Link href="/free-build" className="font-semibold text-brand underline underline-offset-4">
+          <Link href="/free-build" className="font-semibold text-brand-text-on-dark underline underline-offset-4">
             Get your free build
           </Link>
           .

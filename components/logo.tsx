@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function Logo({ onDark = false, className = "" }: { onDark?: boolean; className?: string }) {
   return (
-    <Link href="/" className={`flex items-center gap-2.5 ${className}`} aria-label="Workhorse Digital home">
+    <Link href="/" className={`flex items-center gap-2.5 ${className}`}>
       <Image
         src="/brand/horseshoe-orange.png"
         alt=""
@@ -16,7 +16,7 @@ export function Logo({ onDark = false, className = "" }: { onDark?: boolean; cla
         <span className={`font-heading text-xl font-extrabold tracking-tight ${onDark ? "text-cream" : "text-ink"}`}>
           Workhorse
         </span>
-        <span className="text-[0.62rem] font-bold uppercase tracking-[0.22em] text-brand">Digital Co.</span>
+        <span className={`text-[0.62rem] font-bold uppercase tracking-[0.22em] ${onDark ? "text-brand-text-on-dark" : "text-brand-text"}`}>Digital Co.</span>
       </span>
     </Link>
   );

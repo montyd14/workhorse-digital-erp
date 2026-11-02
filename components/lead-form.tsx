@@ -156,7 +156,7 @@ export function LeadForm() {
       <button
         type="submit"
         disabled={submitting}
-        className="w-full rounded-md bg-brand px-6 py-4 text-lg font-bold text-white hover:bg-brand-dark disabled:opacity-60 sm:w-auto"
+        className="w-full rounded-md bg-brand-text px-6 py-4 text-lg font-bold text-white hover:bg-brand-dark disabled:opacity-60 sm:w-auto"
       >
         {submitting ? "Sending..." : "Request My Free Build"}
       </button>

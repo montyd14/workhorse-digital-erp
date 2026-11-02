@@ -87,7 +87,7 @@ export function ShortLeadForm({ variant = "light", location }: { variant?: "ligh
       <button
         type="submit"
         disabled={submitting}
-        className="w-full rounded-md bg-brand px-4 py-3 text-base font-bold text-white hover:bg-brand-dark disabled:opacity-60"
+        className="w-full rounded-md bg-brand-text px-4 py-3 text-base font-bold text-white hover:bg-brand-dark disabled:opacity-60"
       >
         {submitting ? "Sending..." : "Request a Free Build"}
       </button>

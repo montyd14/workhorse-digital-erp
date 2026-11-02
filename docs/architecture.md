@@ -1,27 +1,16 @@
 # Architecture
 
-## Overview
+Single Next.js 16 application. Public marketing pages are prerendered static; the lead API and the Phase 2 private
+area run on the Node server.
 
-Workhorse Digital ERP is a monorepo with two deployable apps and one shared package.
+| Part | Purpose | Stack |
+| --- | --- | --- |
+| `app/(marketing)` | Public lead-gen site | Next.js App Router, Tailwind 4, MDX |
+| `app/api/leads` | Lead capture | Route handler, zod, Prisma, Nodemailer |
+| `app/(app)` + `proxy.ts` | Phase 2 ERP/CRM shell | Auth.js (JWT), role helpers |
+| `prisma/` | Data model | Prisma 7, MySQL via mariadb driver adapter |
 
-| Part             | Purpose                                              | Planned stack                         |
-| ---------------- | ---------------------------------------------------- | ------------------------------------- |
-| `apps/web`       | Marketing site and client portal                     | Next.js, TypeScript, Tailwind CSS     |
-| `apps/api`       | REST API, auth, client/project/invoice management    | Node.js, TypeScript, Fastify, Prisma  |
-| `packages/shared`| Types, validation, constants shared by both          | TypeScript, Zod                       |
+Content is code: industries and services are TypeScript objects, blog posts are MDX. Adding content does not require
+touching page components.
 
-## Planned ERP modules
-
-- Clients and contacts
-- Projects and deliverables
-- Campaign tracking and reporting
-- Proposals, invoices, and payments
-- Team and task management
-
-## Environments
-
-- `development` – local machines
-- `staging` – pre-release testing
-- `production` – live
-
-Details to be filled in as each piece is built.
+See [PHASE2.md](../PHASE2.md) for the private side and [README.md](../README.md) for setup and deployment.

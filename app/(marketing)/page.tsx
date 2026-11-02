@@ -37,7 +37,7 @@ export default function HomePage() {
       <section className="bg-ink text-cream">
         <Container className="grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-[1.2fr_1fr]">
           <div>
-            <Eyebrow>{site.tagline}</Eyebrow>
+            <Eyebrow className="text-brand-text-on-dark">{site.tagline}</Eyebrow>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl">
               We build your software first. <span className="text-brand">You pay only if you love it.</span>
             </h1>
@@ -61,7 +61,7 @@ export default function HomePage() {
           </div>
           <div className="hidden lg:block">
             <div className="rounded-lg border border-cream/15 bg-ink-soft/50 p-6">
-              <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand">The offer</p>
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-text-on-dark">The offer</p>
               <ol className="mt-4 space-y-4">
                 {steps.map((s, i) => (
                   <li key={s.title} className="flex gap-4">
@@ -146,7 +146,7 @@ export default function HomePage() {
 
       {/* Industries */}
       <Section tone="dark">
-        <Eyebrow>Industries we serve</Eyebrow>
+        <Eyebrow className="text-brand-text-on-dark">Industries we serve</Eyebrow>
         <H2>Phone-driven trades. Owner-operated. Under-marketed.</H2>
         <p className="mt-4 max-w-2xl text-lg text-cream/80">
           We started with vending operators and expanded to the industries that run the same way: on the phone, on the

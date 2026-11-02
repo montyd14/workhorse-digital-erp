@@ -44,7 +44,7 @@ export function LoginForm() {
         required
         className="w-full rounded-md border border-cream/20 bg-ink px-3 py-2.5 text-cream"
       />
-      <button type="submit" className="w-full rounded-md bg-brand px-4 py-3 font-bold text-white hover:bg-brand-dark">
+      <button type="submit" className="w-full rounded-md bg-brand-text px-4 py-3 font-bold text-white hover:bg-brand-dark">
         Sign in
       </button>
     </form>

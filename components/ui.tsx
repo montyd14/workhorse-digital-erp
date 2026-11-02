@@ -12,7 +12,7 @@ type ButtonProps = {
 const base =
   "inline-flex items-center justify-center gap-2 rounded-md font-semibold tracking-tight transition-colors focus-visible:outline-none";
 const variants = {
-  primary: "bg-brand text-white hover:bg-brand-dark shadow-sm",
+  primary: "bg-brand-text text-white hover:bg-brand-dark shadow-sm",
   secondary: "bg-ink text-cream hover:bg-ink-soft",
   ghost: "border-2 border-ink text-ink hover:bg-ink hover:text-cream",
   onDark: "border-2 border-cream text-cream hover:bg-cream hover:text-ink",
@@ -66,7 +66,7 @@ export function Section({
 
 export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <p className={`mb-3 text-sm font-bold uppercase tracking-[0.18em] text-brand ${className}`}>{children}</p>
+    <p className={`mb-3 text-sm font-bold uppercase tracking-[0.18em] text-brand-text ${className}`}>{children}</p>
   );
 }
 
@@ -90,15 +90,15 @@ export function Card({ children, className = "" }: { children: ReactNode; classN
   );
 }
 
-export function Breadcrumbs({ items }: { items: { name: string; path: string }[] }) {
+export function Breadcrumbs({ items, onDark = false }: { items: { name: string; path: string }[]; onDark?: boolean }) {
   return (
-    <nav aria-label="Breadcrumb" className="text-sm text-ink-muted">
+    <nav aria-label="Breadcrumb" className={`text-sm ${onDark ? "text-cream/75" : "text-ink-muted"}`}>
       <ol className="flex flex-wrap items-center gap-1">
         {items.map((item, i) => (
           <li key={item.path} className="flex items-center gap-1">
             {i > 0 && <span aria-hidden="true">/</span>}
             {i === items.length - 1 ? (
-              <span aria-current="page" className="text-ink">
+              <span aria-current="page" className={onDark ? "text-cream" : "text-ink"}>
                 {item.name}
               </span>
             ) : (

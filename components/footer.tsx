@@ -34,7 +34,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 className="text-sm font-bold uppercase tracking-[0.18em] text-brand">Services</h2>
+            <h2 className="text-sm font-bold uppercase tracking-[0.18em] text-brand-text-on-dark">Services</h2>
             <ul className="mt-4 space-y-2 text-sm">
               {services.map((s) => (
                 <li key={s.slug}>
@@ -67,7 +67,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 className="text-sm font-bold uppercase tracking-[0.18em] text-brand">Industries</h2>
+            <h2 className="text-sm font-bold uppercase tracking-[0.18em] text-brand-text-on-dark">Industries</h2>
             <ul className="mt-4 space-y-2 text-sm">
               {industries.map((i) => (
                 <li key={i.slug}>

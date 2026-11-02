@@ -85,17 +85,17 @@ export default function HowItWorksPage() {
       <Section tone="dark">
         <div className="grid gap-10 lg:grid-cols-3">
           <div>
-            <Eyebrow>Cost</Eyebrow>
+            <Eyebrow className="text-brand-text-on-dark">Cost</Eyebrow>
             <H2 className="text-2xl sm:text-3xl">Flat. Quoted first.</H2>
             <p className="mt-3 text-cream/80">One setup fee, one monthly fee. Both on the table before we write a line.</p>
           </div>
           <div>
-            <Eyebrow>Timeline</Eyebrow>
+            <Eyebrow className="text-brand-text-on-dark">Timeline</Eyebrow>
             <H2 className="text-2xl sm:text-3xl">Weeks, not quarters.</H2>
             <p className="mt-3 text-cream/80">A website in two to three weeks. A CRM or dashboard in four to six.</p>
           </div>
           <div>
-            <Eyebrow>Ownership</Eyebrow>
+            <Eyebrow className="text-brand-text-on-dark">Ownership</Eyebrow>
             <H2 className="text-2xl sm:text-3xl">Your data. Your domain.</H2>
             <p className="mt-3 text-cream/80">Export any time. Leave any time with thirty days notice.</p>
           </div>

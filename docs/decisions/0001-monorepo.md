@@ -1,19 +1,20 @@
-# ADR 0001: Use a single monorepo for web and api
+# ADR 0001: Single Next.js app instead of separate front end and back end
 
-**Status:** Accepted
+**Status:** Accepted (supersedes the initial monorepo scaffold)
 **Date:** 2026-11-02
 
 ## Context
 
-The front end and back end will be developed together by a small team and share types and
-validation logic.
+The first scaffold split the repo into `apps/web` and `apps/api`. The Phase 1 brief calls for a Next.js site with API
+routes, deployed to Hostinger Node.js hosting, which runs one Node process.
 
 ## Decision
 
-Keep both apps and shared code in one repository using npm workspaces.
+One Next.js application at the repo root. API routes live in `app/api`. The Phase 2 private area is a route group in
+the same app.
 
 ## Consequences
 
-- One place for issues, CI, and releases.
-- Shared types stay in sync without publishing packages.
-- CI must be scoped so that changes to one app do not needlessly rebuild the other.
+- One build, one deploy, one process on Hostinger.
+- Shared types need no package boundary.
+- If the ERP ever needs a separate service, it can be split out later with the Prisma schema as the contract.

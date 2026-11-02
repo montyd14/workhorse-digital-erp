@@ -8,9 +8,12 @@
   --color-brand: #e2582c; /* Workhorse orange */
   --color-brand-dark: #c4471f;
   --color-brand-light: #f0a98e;
+  /* Orange tuned for text: 4.5:1+ on cream/white, and on charcoal */
+  --color-brand-text: #b8431a;
+  --color-brand-text-on-dark: #ec6f47;
   --color-ink: #1e2328; /* charcoal */
   --color-ink-soft: #3a4149;
-  --color-ink-muted: #6b7280;
+  --color-ink-muted: #5f6873;
   --color-cream: #f5efe4;
   --color-cream-dark: #e9e1d2;
   --color-rust: #8c4a2b;

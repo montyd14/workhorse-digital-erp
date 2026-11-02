@@ -51,8 +51,8 @@ export default async function IndustryPage({ params }: PageProps<"/industries/[s
         ]}
       />
       <Section tone="dark" className="pb-12">
-        <Breadcrumbs items={crumbs} />
-        <Eyebrow className="mt-6">For {industry.name.toLowerCase()}</Eyebrow>
+        <Breadcrumbs items={crumbs} onDark />
+        <Eyebrow className="mt-6 text-brand-text-on-dark">For {industry.name.toLowerCase()}</Eyebrow>
         <H1>{industry.headline}</H1>
         <Lead className="text-cream/85">{industry.intro}</Lead>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -84,7 +84,7 @@ export default async function IndustryPage({ params }: PageProps<"/industries/[s
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           {industry.solutions.map((s) => (
             <Card key={s.title} className="flex flex-col">
-              <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand">{serviceNames[s.service]}</span>
+              <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand-text">{serviceNames[s.service]}</span>
               <h3 className="mt-2 text-xl">{s.title}</h3>
               <p className="mt-2 flex-1 text-ink-soft">{s.description}</p>
               <Link

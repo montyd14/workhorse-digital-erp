@@ -37,7 +37,7 @@ export default function AppLayout({ children }: LayoutProps<"/">) {
                   className="flex items-center justify-between rounded-md px-3 py-2 text-sm font-semibold text-cream/80 hover:bg-ink-soft hover:text-cream"
                 >
                   {item.label}
-                  <span className="text-[0.6rem] font-bold uppercase tracking-wider text-brand">Phase 2</span>
+                  <span className="text-[0.6rem] font-bold uppercase tracking-wider text-brand-text-on-dark">Phase 2</span>
                 </Link>
               </li>
             ))}
@@ -48,7 +48,7 @@ export default function AppLayout({ children }: LayoutProps<"/">) {
       <div className="flex flex-1 flex-col">
         <header className="flex h-14 items-center justify-between border-b border-line bg-paper px-4 md:hidden">
           <Logo />
-          <span className="text-xs font-bold uppercase tracking-wider text-brand">Phase 2</span>
+          <span className="text-xs font-bold uppercase tracking-wider text-brand-text-on-dark">Phase 2</span>
         </header>
         <main className="flex-1 p-6 sm:p-8">{children}</main>
       </div>
