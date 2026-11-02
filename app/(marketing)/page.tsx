@@ -58,7 +58,8 @@ export default function HomePage() {
             <ul className="mt-8 flex flex-wrap gap-2 text-sm font-semibold">
               <li className="rounded-full border border-brand/60 bg-brand/15 px-3 py-1 text-brand-light">No upfront cost</li>
               <li className="rounded-full border border-gold/60 bg-gold/15 px-3 py-1 text-gold">Flat monthly fee</li>
-              <li className="rounded-full border border-cream/40 bg-cream/10 px-3 py-1 text-cream">Built for phone-driven trades</li>
+              <li className="rounded-full border border-cream/40 bg-cream/10 px-3 py-1 text-cream">Optimized for Mobile and Desktop</li>
+              <li className="rounded-full border border-brand-light/60 bg-brand-light/15 px-3 py-1 text-brand-light">Risk-free Demo</li>
             </ul>
           </div>
           <div className="hidden lg:block">
