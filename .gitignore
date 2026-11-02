@@ -35,3 +35,11 @@ Thumbs.db
 .cache/
 .turbo/
 .vercel
+
+# Next.js
+/.next/
+/out/
+next-env.d.ts
+*.pem
+.pnpm-debug.log*
+generated/

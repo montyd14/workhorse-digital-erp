@@ -1,0 +1,155 @@
+// Workhorse Digital data model.
+// Phase 1 uses Lead only. Everything else is scaffolding for the Phase 2 ERP/CRM.
+// See PHASE2.md for how each model is intended to grow.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+/// Pipeline stage of a lead. Becomes the CRM kanban in Phase 2.
+enum LeadStatus {
+  NEW              @map("new")
+  CONTACTED        @map("contacted")
+  DISCOVERY_BOOKED @map("discovery_booked")
+  BUILDING         @map("building")
+  PREVIEW_SENT     @map("preview_sent")
+  WON              @map("won")
+  LOST             @map("lost")
+}
+
+enum Role {
+  SALES
+  OPS
+  MANAGER
+  ADMIN
+}
+
+/// Inbound lead from the public site. Fully used in Phase 1.
+model Lead {
+  id           String     @id @default(cuid())
+  name         String
+  businessName String
+  phone        String
+  email        String
+  industry     String
+  /// Array of needs: website, crm, erp, call_handling, not_sure
+  needs        Json
+  websiteUrl   String?
+  message      String?    @db.Text
+
+  // Attribution
+  sourcePage   String?
+  utmSource    String?
+  utmMedium    String?
+  utmCampaign  String?
+  utmTerm      String?
+  utmContent   String?
+  referrer     String?    @db.Text
+  ipHash       String?
+
+  // Pipeline (Phase 2 CRM)
+  status       LeadStatus @default(NEW)
+  assignedToId String?
+  assignedTo   User?      @relation(fields: [assignedToId], references: [id], onDelete: SetNull)
+  activities   Activity[]
+  client       Client?
+
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([email])
+  @@index([assignedToId])
+}
+
+/// Internal team member. Login is disabled until Phase 2 (ENABLE_APP_LOGIN).
+model User {
+  id           String     @id @default(cuid())
+  email        String     @unique
+  name         String
+  passwordHash String
+  role         Role       @default(SALES)
+  isActive     Boolean    @default(true)
+  leads        Lead[]
+  activities   Activity[]
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
+
+/// A won lead becomes a Client.
+/// TODO Phase 2: billing contact, address, notes, portal access.
+model Client {
+  id        String     @id @default(cuid())
+  name      String
+  industry  String?
+  leadId    String?    @unique
+  lead      Lead?      @relation(fields: [leadId], references: [id], onDelete: SetNull)
+  projects  Project[]
+  invoices  Invoice[]
+  activities Activity[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+/// The build we do for a client (website, CRM, dashboard, call handling).
+/// TODO Phase 2: milestones, preview URL, approval date, go-live date, assigned team.
+model Project {
+  id        String   @id @default(cuid())
+  clientId  String
+  client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  name      String
+  /// e.g. website | crm | erp | call_handling
+  type      String
+  /// e.g. planned | building | preview | approved | live | cancelled
+  status    String   @default("planned")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([clientId])
+}
+
+/// Notes, calls, and emails logged against a lead or client.
+/// TODO Phase 2: attachments, reminders/follow-up dates, email threading.
+model Activity {
+  id        String   @id @default(cuid())
+  /// note | call | email | status_change
+  type      String
+  body      String   @db.Text
+  leadId    String?
+  lead      Lead?    @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  clientId  String?
+  client    Client?  @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  createdAt DateTime @default(now())
+
+  @@index([leadId])
+  @@index([clientId])
+}
+
+/// Invoice records only. Card billing happens in Square outside this system.
+/// TODO Phase 2: line items, recurring monthly schedule, Square payment reference sync.
+model Invoice {
+  id          String    @id @default(cuid())
+  clientId    String
+  client      Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  /// setup | monthly | other
+  kind        String
+  amountCents Int
+  currency    String    @default("USD")
+  /// draft | sent | paid | void
+  status      String    @default("draft")
+  externalRef String?
+  issuedAt    DateTime?
+  paidAt      DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([clientId])
+}

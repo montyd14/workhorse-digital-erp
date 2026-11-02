@@ -1,0 +1,47 @@
+---
+title: "How to Automate Vending Route Planning Without Buying a Telemetry System"
+description: "A practical path from paper route sheets to automated kitting lists and route days, using the sales data you already have."
+publishedAt: "2026-11-02"
+industry: "vending"
+services: ["erp-dashboards", "crm"]
+---
+
+Telemetry vendors will tell you route automation starts with a modem in every machine. For a 200-machine operation, maybe. For an operator with 20 to 80 machines, you can automate most of your route planning with data you already collect, and add telemetry later if it ever pays off.
+
+Here is the path we walk operators through.
+
+## Step 1: Get every machine into one list
+
+Before any automation, you need a single source of truth: every machine, its location, its planogram, and the route day it belongs to. Most operators have this spread across a spreadsheet, a notebook, and a driver's memory. Pulling it into one system is the unglamorous first step that makes everything else possible.
+
+## Step 2: Record what goes in and what comes back
+
+The data that drives routing is simple: what each machine took per visit. You do not need live telemetry. You need drivers to record fills, which they already do on paper. Moving that to a phone form takes seconds per machine and gives you a sales history per slot within a month.
+
+## Step 3: Set par levels per slot
+
+With a few weeks of fill data, you can set a par level for every slot in every machine. The system now knows that slot B4 at the warehouse location moves about 18 units a week, while the same product in the dentist office moves 4.
+
+## Step 4: Generate kitting lists automatically
+
+This is the step that saves real hours. The night before a route day, the system looks at the last fill, the par level, and the days since the visit, and produces a kitting list per machine and a pick list for the warehouse. Drivers log in, see their list, and kit. No guessing, no bringing back product.
+
+We call this [pre-kitting with employee logins](/industries/vending), and it is usually the first dashboard we build for a vending operator.
+
+## Step 5: Adjust route days from the data
+
+Once you have fill history, machines that are always full at visit time can move to a longer cycle. Machines that are empty by day four get visited sooner. The system can flag both. You stop paying a driver to visit a machine that did not need it.
+
+## Step 6: Close the loop with the customer
+
+Put a QR code on every machine that links to your system. Customers report a stuck product or request an item. The request lands with the machine ID already attached, feeds your planogram decisions, and routes the service ticket to the right driver.
+
+## When telemetry makes sense
+
+Once your route planning is running on fill data, telemetry becomes a cost decision, not a leap of faith. You will know exactly which machines would benefit from live data and which are fine on a weekly cycle.
+
+## How we build it
+
+Our [operations dashboards](/services/erp-dashboards) for vending operators cover machines, planograms, par levels, kitting lists, employee logins, and QR-code service requests, connected to a [route sales CRM](/services/crm) so new placements flow onto routes automatically.
+
+We build the first version at no cost and you run it alongside your current process. If it saves the hours we think it will, you keep it for a flat monthly fee. [Request your free build](/free-build).
