@@ -91,7 +91,7 @@ export default async function IndustryPage({ params }: PageProps<"/industries/[s
                 href={`/services/${s.service}`}
                 className="mt-4 inline-flex text-sm font-semibold text-rust underline underline-offset-4 hover:text-brand"
               >
-                How our {serviceNames[s.service].toLowerCase()} work
+                How our {serviceNames[s.service]} work
               </Link>
             </Card>
           ))}

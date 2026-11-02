@@ -113,7 +113,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
       {related.length > 0 && (
         <Section tone="paper">
           <Eyebrow>Industries</Eyebrow>
-          <H2>Who we build {service.shortName.toLowerCase()} for.</H2>
+          <H2>Who we build {service.shortName} for.</H2>
           <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((i) => {
               const solution = i.solutions.find((s) => s.service === service.slug);
@@ -137,7 +137,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr]">
           <div>
             <Eyebrow>Questions</Eyebrow>
-            <H2>About {service.shortName.toLowerCase()}.</H2>
+            <H2>About {service.shortName}.</H2>
             <p className="mt-4 text-ink-soft">
               See also <Link href="/how-it-works" className="font-semibold text-rust underline underline-offset-4">how the free build works</Link>.
             </p>

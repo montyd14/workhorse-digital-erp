@@ -53,7 +53,7 @@ export default function ServicesPage() {
                 href={`/services/${s.slug}`}
                 className="mt-6 inline-flex font-semibold text-rust underline underline-offset-4 hover:text-brand"
               >
-                Learn about {s.shortName.toLowerCase()}
+                Learn about {s.shortName}
               </Link>
             </Card>
           ))}
