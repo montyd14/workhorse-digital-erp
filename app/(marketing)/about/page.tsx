@@ -92,9 +92,9 @@ export default function AboutPage() {
       <Section tone="cream">
         <Eyebrow>How we work</Eyebrow>
         <H2>Four rules we do not break.</H2>
-        <ol className="mt-10 grid gap-8 sm:grid-cols-2">
+        <ol className="mt-10 grid gap-5 sm:grid-cols-2">
           {values.map((v, i) => (
-            <li key={v.title} className="flex gap-4">
+            <li key={v.title} className="flex gap-4 rounded-xl border border-line bg-paper p-6">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-ink font-heading text-base font-extrabold tabular-nums text-cream">
                 {i + 1}
               </span>
