@@ -31,7 +31,6 @@
 @theme inline {
   --font-heading: var(--font-heading), "Arial Narrow", Impact, sans-serif;
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
-  --font-hand: var(--font-hand), "Comic Sans MS", cursive;
 }
 
 @layer base {

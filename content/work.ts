@@ -29,7 +29,7 @@ export const work: WorkItem[] = [
     blurb: "Placement site with machine pages, a quote form wired to the CRM, and local pages for three counties.",
     services: ["websites", "crm"],
     badge: "Demo build",
-    accent: "#e2582c",
+    accent: "#b8431a",
   },
   {
     slug: "clearline-pressure-washing",
@@ -38,7 +38,7 @@ export const work: WorkItem[] = [
     blurb: "Before-and-after galleries, instant quote request, and a job board the crew runs from their phones.",
     services: ["websites", "erp-dashboards"],
     badge: "Demo build",
-    accent: "#1f6f8b",
+    accent: "#1e2328",
   },
   {
     slug: "bluewater-pool-care",
@@ -47,6 +47,6 @@ export const work: WorkItem[] = [
     blurb: "Weekly-service booking site plus a customer login that shows visit history, readings, and photos.",
     services: ["websites", "crm", "ai-call-handling"],
     badge: "Demo build",
-    accent: "#2a7f7a",
+    accent: "#2b6b66",
   },
 ];

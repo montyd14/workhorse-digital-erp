@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Barlow, Barlow_Condensed, Caveat } from "next/font/google";
+import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@/components/analytics";
 import { site } from "@/lib/site";
@@ -8,13 +8,6 @@ const heading = Barlow_Condensed({
   subsets: ["latin"],
   weight: ["700", "800"],
   variable: "--font-heading",
-  display: "swap",
-});
-
-const hand = Caveat({
-  subsets: ["latin"],
-  weight: ["600", "700"],
-  variable: "--font-hand",
   display: "swap",
 });
 
@@ -45,7 +38,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${heading.variable} ${body.variable} ${hand.variable} h-full`}>
+    <html lang="en" className={`${heading.variable} ${body.variable} h-full`}>
       <body className="flex min-h-full flex-col">
         {children}
         <Analytics />
