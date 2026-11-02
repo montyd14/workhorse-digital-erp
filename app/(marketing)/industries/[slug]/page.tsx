@@ -10,6 +10,7 @@ import { serviceNames } from "@/content/services";
 import { getAllPosts } from "@/lib/blog";
 import { breadcrumbJsonLd, pageMetadata, serviceJsonLd } from "@/lib/seo";
 import { nav } from "@/lib/site";
+import { lowerKeepAcronyms } from "@/lib/text";
 
 export function generateStaticParams() {
   return industries.map((i) => ({ slug: i.slug }));
@@ -52,7 +53,7 @@ export default async function IndustryPage({ params }: PageProps<"/industries/[s
       />
       <Section tone="dark" className="pb-12">
         <Breadcrumbs items={crumbs} onDark />
-        <Eyebrow className="mt-6 text-brand-text-on-dark">For {industry.name.toLowerCase()}</Eyebrow>
+        <Eyebrow className="mt-6 text-brand-text-on-dark">For {lowerKeepAcronyms(industry.name)}</Eyebrow>
         <H1>{industry.headline}</H1>
         <Lead className="text-cream/85">{industry.intro}</Lead>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -101,7 +102,7 @@ export default async function IndustryPage({ params }: PageProps<"/industries/[s
       {industry.deepDive && (
         <Section tone="cream">
           <Eyebrow>In depth</Eyebrow>
-          <H2>How the {industry.shortName.toLowerCase()} system fits together.</H2>
+          <H2>How the {lowerKeepAcronyms(industry.shortName)} system fits together.</H2>
           <div className="mt-10 space-y-10">
             {industry.deepDive.map((d, i) => (
               <div key={d.title} className="grid gap-6 border-t border-line pt-8 lg:grid-cols-[1fr_1.4fr]">
@@ -132,7 +133,7 @@ export default async function IndustryPage({ params }: PageProps<"/industries/[s
         <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr]">
           <div>
             <Eyebrow>Questions</Eyebrow>
-            <H2>From {industry.name.toLowerCase()}.</H2>
+            <H2>From {lowerKeepAcronyms(industry.name)}.</H2>
             <p className="mt-4 text-ink-soft">
               Read <Link href="/how-it-works" className="font-semibold text-rust underline underline-offset-4">how the free build works</Link> or{" "}
               <Link href="/contact" className="font-semibold text-rust underline underline-offset-4">ask us directly</Link>.
@@ -145,7 +146,7 @@ export default async function IndustryPage({ params }: PageProps<"/industries/[s
       {posts.length > 0 && (
         <Section tone="cream">
           <Eyebrow>From the blog</Eyebrow>
-          <H2>Reading for {industry.name.toLowerCase()}.</H2>
+          <H2>Reading for {lowerKeepAcronyms(industry.name)}.</H2>
           <ul className="mt-8 grid gap-6 md:grid-cols-3">
             {posts.map((p) => (
               <li key={p.slug}>
@@ -159,7 +160,7 @@ export default async function IndustryPage({ params }: PageProps<"/industries/[s
         </Section>
       )}
 
-      <FinalCta title={`See your ${industry.shortName.toLowerCase()} software working before you pay.`} />
+      <FinalCta title={`See your ${lowerKeepAcronyms(industry.shortName)} software working before you pay.`} />
     </>
   );
 }

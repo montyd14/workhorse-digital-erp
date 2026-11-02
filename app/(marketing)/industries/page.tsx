@@ -6,6 +6,7 @@ import { Breadcrumbs, Card, Eyebrow, H1, Lead, Section } from "@/components/ui";
 import { industries } from "@/content/industries";
 import { serviceNames } from "@/content/services";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
+import { lowerKeepAcronyms } from "@/lib/text";
 
 export const metadata: Metadata = pageMetadata({
   title: "Industries We Build Software For",
@@ -50,7 +51,7 @@ export default function IndustriesPage() {
                 href={`/industries/${i.slug}`}
                 className="mt-6 inline-flex font-semibold text-rust underline underline-offset-4 hover:text-brand"
               >
-                Software for {i.name.toLowerCase()}
+                Software for {lowerKeepAcronyms(i.name)}
               </Link>
             </Card>
           ))}
