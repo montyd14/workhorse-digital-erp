@@ -9,17 +9,19 @@ export function FinalCta({
   body?: string;
 }) {
   return (
-    <section className="bg-brand-text py-12 text-cream sm:py-16">
-      <Container className="text-center">
-        <h2 className="mx-auto max-w-3xl text-3xl sm:text-4xl">{title}</h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-cream">{body}</p>
-        <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-          <Button href={nav.cta.href} variant="secondary" size="lg">
-            {nav.cta.label}
-          </Button>
-          <Button href={nav.secondaryCta.href} variant="onDark" size="lg">
-            {nav.secondaryCta.label}
-          </Button>
+    <section className="bg-paper py-12 sm:py-16">
+      <Container>
+        <div className="rounded-3xl bg-brand-text px-6 py-12 text-center text-cream shadow-xl shadow-brand/20 sm:px-12 sm:py-16">
+          <h2 className="mx-auto max-w-3xl text-4xl sm:text-5xl">{title}</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-cream">{body}</p>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <Button href={nav.cta.href} variant="secondary" size="lg">
+              {nav.cta.label}
+            </Button>
+            <Button href={nav.secondaryCta.href} variant="onDark" size="lg">
+              {nav.secondaryCta.label}
+            </Button>
+          </div>
         </div>
       </Container>
     </section>
