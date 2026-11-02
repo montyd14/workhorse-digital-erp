@@ -96,7 +96,7 @@ export default function AboutPage() {
           {values.map((v, i) => (
             <li key={v.title} className="flex gap-4">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-ink font-heading text-base font-extrabold tabular-nums text-cream">
-                {String(i + 1).padStart(2, "0")}
+                {i + 1}
               </span>
               <div>
                 <h3 className="text-xl">{v.title}</h3>
