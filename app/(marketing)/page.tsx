@@ -90,7 +90,10 @@ export default function HomePage() {
       {/* What we build */}
       <Section tone="cream">
         <Eyebrow>What we build</Eyebrow>
-        <H2>Four tools. One flat fee. Built around how your business runs.</H2>
+        <H2>The software your business actually needs</H2>
+        <p className="mt-3 max-w-2xl text-lg text-ink-soft">
+          Start with the one that hurts most. Add the rest when you&apos;re ready. One flat fee either way.
+        </p>
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {services.map((s) => (
             <Card key={s.slug} className="flex flex-col">
