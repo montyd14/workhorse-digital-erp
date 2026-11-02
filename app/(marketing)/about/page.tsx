@@ -72,19 +72,20 @@ export default function AboutPage() {
           </div>
           <div className="space-y-4 text-lg leading-relaxed text-ink-soft">
             <p>
-              The standard agency asks an owner-operator to pay a deposit, wait months, and hope the result works.
-              If it does not, the money is gone. That model works for companies with a budget line for experiments.
-              It does not work for someone running routes.
+              Most agencies ask a small business owner to pay a deposit up front, wait months, and hope the result
+              works. If it does not, that money is gone. That approach suits companies with room in the budget for
+              experiments. It does not suit someone running routes and answering their own phone.
             </p>
             <p>
-              So we flipped it. We build the website, the CRM, the dashboard, or the call handling first, at our
-              expense. You try it on real work. If it pulls its weight, you pay a flat fee and keep it. If not, you
-              owe nothing. We take the risk because we are confident in what we build, and because it is the only
-              honest way to sell software to someone who has been burned before.
+              We do it the other way around. We build your website, CRM, dashboard, or call handling first, at our own
+              expense. You use it on real work. If it earns its keep, you pay a flat fee and keep it. If not, you owe
+              nothing.
             </p>
             <p>
-              We are based in {site.serviceArea.locality} and work with businesses across the country.
+              We take on that risk because we are confident in what we build, and because it is the fairest way to
+              work with business owners who have been let down before.
             </p>
+            <p>{site.name} is based in {site.serviceArea.locality} and works with businesses across the country.</p>
           </div>
         </div>
       </Section>
