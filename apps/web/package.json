@@ -1,0 +1,7 @@
+{
+  "name": "@workhorse/web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Workhorse Digital front end (marketing site and client portal)",
+  "scripts": {}
+}

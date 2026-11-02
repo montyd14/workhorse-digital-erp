@@ -1,0 +1,7 @@
+{
+  "name": "@workhorse/api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Workhorse Digital back end (REST API, auth, business logic)",
+  "scripts": {}
+}
