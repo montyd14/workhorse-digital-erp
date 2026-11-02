@@ -30,7 +30,7 @@ export function FinalCta({
               <Button href={nav.cta.href} variant="secondary" size="lg">
                 {nav.cta.label}
               </Button>
-              <Button href={nav.secondaryCta.href} variant="onDark" size="lg">
+              <Button href={nav.secondaryCta.href} variant="light" size="lg">
                 Book a 15-Minute Call
               </Button>
             </div>

@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 type ButtonProps = {
   href: string;
   children: ReactNode;
-  variant?: "primary" | "secondary" | "ghost" | "onDark";
+  variant?: "primary" | "secondary" | "ghost" | "onDark" | "light";
   size?: "md" | "lg";
   className?: string;
 };
@@ -16,6 +16,7 @@ const variants = {
   secondary: "bg-ink text-cream hover:bg-ink-soft",
   ghost: "border-2 border-ink text-ink hover:bg-ink hover:text-cream",
   onDark: "border-2 border-cream text-cream hover:bg-cream hover:text-ink",
+  light: "border-2 border-cream bg-cream text-ink hover:bg-paper hover:border-paper",
 };
 const sizes = { md: "px-5 py-3 text-base", lg: "px-7 py-4 text-lg" };
 
