@@ -103,12 +103,7 @@ export function Footer() {
             </li>
             <li>
               <Link href="/login" className="hover:text-cream">
-                Client Login
-              </Link>
-            </li>
-            <li>
-              <Link href="/login/team" className="hover:text-cream">
-                Team Login
+                Log In
               </Link>
             </li>
           </ul>
