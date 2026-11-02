@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Barlow, Barlow_Condensed, Permanent_Marker } from "next/font/google";
+import { Barlow, Barlow_Condensed, Caveat } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@/components/analytics";
 import { site } from "@/lib/site";
@@ -11,9 +11,9 @@ const heading = Barlow_Condensed({
   display: "swap",
 });
 
-const hand = Permanent_Marker({
+const hand = Caveat({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["600", "700"],
   variable: "--font-hand",
   display: "swap",
 });

@@ -12,11 +12,11 @@ export function WorkShowcase() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <Eyebrow>Our work</Eyebrow>
-            <h2 id="work-heading" className="font-hand text-3xl font-normal normal-case tracking-normal text-ink sm:text-4xl">
+            <h2 id="work-heading" className="font-hand text-5xl font-bold normal-case tracking-normal text-ink sm:text-6xl">
               Websites and systems we&apos;ve built.
             </h2>
           </div>
-          <Link href="/free-build" className="font-hand text-xl text-brand-text underline decoration-wavy underline-offset-4 hover:text-brand">
+          <Link href="/free-build" className="font-hand text-2xl font-bold text-brand-text underline decoration-wavy underline-offset-4 hover:text-brand">
             Yours could be next &rarr;
           </Link>
         </div>
@@ -42,7 +42,7 @@ export function WorkShowcase() {
                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-text">{w.industry}</p>
                     {w.badge && <span className="rounded-full bg-cream px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-ink-muted">{w.badge}</span>}
                   </div>
-                  <h3 className="mt-1 font-hand text-2xl font-normal tracking-normal">{w.name}</h3>
+                  <h3 className="mt-1 font-hand text-4xl font-bold tracking-normal">{w.name}</h3>
                   <p className="mt-2 text-ink-soft">{w.blurb}</p>
                   <ul className="mt-3 flex flex-wrap gap-1.5">
                     {w.services.map((s) => (
@@ -87,7 +87,7 @@ function Mock({ name, industry, accent }: { name: string; industry: string; acce
         </span>
       </div>
       <div className="mt-4 rounded-md p-4 text-cream" style={{ backgroundColor: "#1e2328" }}>
-        <p className="font-hand text-xl leading-none sm:text-2xl">{name}</p>
+        <p className="font-hand text-3xl font-bold leading-none sm:text-4xl">{name}</p>
         <p className="mt-1 text-[0.65rem] uppercase tracking-[0.18em] text-cream/80">{industry}</p>
         <span className="mt-3 inline-block h-5 w-24 rounded" style={{ backgroundColor: accent }} />
       </div>
