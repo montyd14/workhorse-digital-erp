@@ -25,8 +25,11 @@ export default function ServicesPage() {
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <Section tone="cream" className="pb-10">
         <Breadcrumbs items={crumbs} />
-        <Eyebrow className="mt-6">Services</Eyebrow>
-        <H1>Software built to do the work, not add to it.</H1>
+        <Eyebrow className="mt-6">What we build</Eyebrow>
+        <H1>Services</H1>
+        <p className="mt-4 max-w-3xl font-heading text-2xl font-bold leading-tight text-ink-soft sm:text-3xl">
+          Software built to do the work, not add to it.
+        </p>
         <Lead>
           Everything we build has the same goal: more jobs booked and less time lost to admin. Start with one tool or
           combine several. We build each one at no cost, and you keep it only if it earns its place.
