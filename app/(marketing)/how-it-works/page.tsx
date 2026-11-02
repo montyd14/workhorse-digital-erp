@@ -22,22 +22,22 @@ const steps = [
   {
     title: "Discovery call",
     time: "15 minutes",
-    body: "A short call to understand your business: what you do, where the hours go, and what keeps slipping through the cracks. We'll tell you plainly what we'd build first and what we'd leave alone.",
+    body: "A short call to learn how your business runs, where the hours go, and what keeps slipping through the cracks. We will tell you clearly what we would build first and what we would leave alone.",
   },
   {
     title: "We build it, free",
     time: "2 to 6 weeks",
-    body: "We write the copy, design the screens, and build a working version around how your business runs. You get a live preview link and a quick check-in each week. No deposit. Nothing to sign.",
+    body: "We write the copy, design the screens, and build a working version around your business. You receive a live preview link and a brief check-in every week. There is no deposit and nothing to sign.",
   },
   {
     title: "You try it on real work",
     time: "Up to 2 weeks",
-    body: "Use it with real customers, real routes, and real calls. Want something changed? Tell us, and we'll change it. You decide with the finished product in your hands, not from a proposal.",
+    body: "Use it with real customers, real routes, and real calls. If something needs to change, tell us and we will change it. You decide with the finished product in hand, not from a proposal.",
   },
   {
     title: "Approve and go live",
     time: "Same week",
-    body: "If you keep it, you pay a flat setup fee and a flat monthly fee, both quoted before we started. We move it to your domain, connect your phone and email, and train your team.",
+    body: "If you keep it, you pay a flat setup fee and a flat monthly fee, both quoted before work begins. We move it to your domain, connect your phone and email, and train your team.",
   },
 ];
 
