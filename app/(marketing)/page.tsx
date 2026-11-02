@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FinalCta } from "@/components/cta";
+import { SearchEngineStrip } from "@/components/search-engine-strip";
+import { ServiceIcon } from "@/components/service-icon";
 import { FaqList } from "@/components/faq";
 import { Button, Card, Container, Eyebrow, H2, Lead, Section } from "@/components/ui";
 import { industries } from "@/content/industries";
@@ -34,7 +36,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-ink text-cream">
+      <section className="border-t-8 border-brand bg-ink text-cream">
         <Container className="grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-[1.2fr_1fr]">
           <div>
             <Eyebrow className="text-brand-text-on-dark">{site.tagline}</Eyebrow>
@@ -53,10 +55,10 @@ export default function HomePage() {
                 {nav.secondaryCta.label}
               </Button>
             </div>
-            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-cream/70">
-              <li>No upfront cost</li>
-              <li>Flat monthly fee</li>
-              <li>Built for phone-driven trades</li>
+            <ul className="mt-8 flex flex-wrap gap-2 text-sm font-semibold">
+              <li className="rounded-full border border-brand/60 bg-brand/15 px-3 py-1 text-brand-light">No upfront cost</li>
+              <li className="rounded-full border border-gold/60 bg-gold/15 px-3 py-1 text-gold">Flat monthly fee</li>
+              <li className="rounded-full border border-cream/40 bg-cream/10 px-3 py-1 text-cream">Built for phone-driven trades</li>
             </ul>
           </div>
           <div className="hidden lg:block">
@@ -80,6 +82,8 @@ export default function HomePage() {
         </Container>
       </section>
 
+      <SearchEngineStrip />
+
       {/* Problem */}
       <Section tone="cream">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
@@ -87,7 +91,7 @@ export default function HomePage() {
             <Eyebrow>The problem</Eyebrow>
             <H2>Big agencies do not want your business. We built ours for it.</H2>
           </div>
-          <div className="space-y-4 text-lg leading-relaxed text-ink-soft">
+          <div className="space-y-4 border-l-4 border-brand pl-6 text-lg leading-relaxed text-ink-soft">
             <p>
               If you run a vending route, a laundromat, a pressure washing crew, or a plumbing truck, you have heard the
               pitch. Five-figure deposit. Six-month timeline. A template with your logo on it. Then a monthly bill for a
@@ -103,13 +107,13 @@ export default function HomePage() {
       </Section>
 
       {/* How it works */}
-      <Section tone="paper" id="how-it-works">
+      <Section tone="tint" id="how-it-works">
         <Eyebrow>How it works</Eyebrow>
         <H2>Four steps. No deposit. No surprises.</H2>
         <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
             <li key={s.title}>
-              <Card className="h-full">
+              <Card className="h-full" accent>
                 <span className="font-heading text-4xl font-extrabold text-brand">0{i + 1}</span>
                 <h3 className="mt-3 text-xl">{s.title}</h3>
                 <p className="mt-2 text-ink-soft">{s.body}</p>
@@ -131,7 +135,8 @@ export default function HomePage() {
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {services.map((s) => (
             <Card key={s.slug} className="flex flex-col">
-              <h3 className="text-2xl">{s.name}</h3>
+              <ServiceIcon slug={s.slug} />
+              <h3 className="mt-4 text-2xl">{s.name}</h3>
               <p className="mt-3 flex-1 text-ink-soft">{s.intro}</p>
               <Link
                 href={`/services/${s.slug}`}
@@ -157,7 +162,7 @@ export default function HomePage() {
             <li key={i.slug}>
               <Link
                 href={`/industries/${i.slug}`}
-                className="block rounded-lg border border-cream/15 bg-ink-soft/40 p-5 transition-colors hover:border-brand hover:bg-ink-soft/70"
+                className="block rounded-lg border border-cream/15 border-l-4 border-l-brand bg-ink-soft/40 p-5 transition-colors hover:border-brand hover:bg-ink-soft/70"
               >
                 <span className="font-heading text-xl font-extrabold">{i.name}</span>
                 <span className="mt-1 block text-sm text-cream/70">{i.headline}</span>
@@ -168,7 +173,7 @@ export default function HomePage() {
       </Section>
 
       {/* FAQ */}
-      <Section tone="paper">
+      <Section tone="tint">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr]">
           <div>
             <Eyebrow>Questions</Eyebrow>

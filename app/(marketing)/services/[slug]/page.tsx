@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FinalCta } from "@/components/cta";
+import { ServiceIcon } from "@/components/service-icon";
 import { FaqList } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
 import { Breadcrumbs, Button, Card, Eyebrow, H1, H2, Lead, Section } from "@/components/ui";
@@ -47,8 +48,11 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
       />
       <Section tone="dark" className="pb-12">
         <Breadcrumbs items={crumbs} onDark />
-        <Eyebrow className="mt-6 text-brand-text-on-dark">{service.shortName}</Eyebrow>
-        <H1>{service.headline}</H1>
+        <div className="mt-6 flex items-center gap-3">
+          <ServiceIcon slug={service.slug} />
+          <Eyebrow className="mb-0 text-brand-text-on-dark">{service.shortName}</Eyebrow>
+        </div>
+        <H1 className="mt-3">{service.headline}</H1>
         <Lead className="text-cream/85">{service.intro}</Lead>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button href={nav.cta.href} size="lg">
@@ -65,7 +69,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         <H2>Built in from day one.</H2>
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           {service.features.map((f) => (
-            <Card key={f.title}>
+            <Card key={f.title} accent>
               <h3 className="text-xl">{f.title}</h3>
               <p className="mt-2 text-ink-soft">{f.description}</p>
             </Card>

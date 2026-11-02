@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FinalCta } from "@/components/cta";
+import { ServiceIcon } from "@/components/service-icon";
 import { JsonLd } from "@/components/json-ld";
 import { Breadcrumbs, Card, Eyebrow, H1, Lead, Section } from "@/components/ui";
 import { services } from "@/content/services";
@@ -35,7 +36,8 @@ export default function ServicesPage() {
         <div className="grid gap-6 md:grid-cols-2">
           {services.map((s) => (
             <Card key={s.slug} className="flex flex-col">
-              <h2 className="text-2xl">{s.name}</h2>
+              <ServiceIcon slug={s.slug} />
+              <h2 className="mt-4 text-2xl">{s.name}</h2>
               <p className="mt-3 text-ink-soft">{s.intro}</p>
               <ul className="mt-4 space-y-1.5 text-sm text-ink-soft">
                 {s.features.slice(0, 3).map((f) => (

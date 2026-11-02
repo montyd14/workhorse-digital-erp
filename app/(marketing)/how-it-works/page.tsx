@@ -65,11 +65,11 @@ export default function HowItWorksPage() {
         </Lead>
       </Section>
 
-      <Section tone="paper" className="pt-4">
+      <Section tone="tint" className="pt-4">
         <ol className="grid gap-6 md:grid-cols-2">
           {steps.map((s, i) => (
             <li key={s.title}>
-              <Card className="h-full">
+              <Card className="h-full" accent>
                 <div className="flex items-baseline justify-between">
                   <span className="font-heading text-4xl font-extrabold text-brand">0{i + 1}</span>
                   <span className="text-xs font-bold uppercase tracking-[0.18em] text-ink-muted">{s.time}</span>

@@ -70,7 +70,7 @@ export default async function IndustryPage({ params }: PageProps<"/industries/[s
         <H2>What we hear from every {industry.ownerNoun}.</H2>
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           {industry.painPoints.map((p) => (
-            <Card key={p.title}>
+            <Card key={p.title} accent>
               <h3 className="text-xl">{p.title}</h3>
               <p className="mt-2 text-ink-soft">{p.description}</p>
             </Card>

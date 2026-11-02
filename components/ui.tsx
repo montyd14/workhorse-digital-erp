@@ -48,7 +48,7 @@ export function Section({
 }: {
   children: ReactNode;
   className?: string;
-  tone?: "cream" | "paper" | "dark" | "brand";
+  tone?: "cream" | "paper" | "dark" | "brand" | "tint";
   id?: string;
 }) {
   const tones = {
@@ -56,6 +56,7 @@ export function Section({
     paper: "bg-paper text-ink",
     dark: "bg-ink text-cream",
     brand: "bg-brand text-white",
+    tint: "bg-brand-tint text-ink",
   };
   return (
     <section id={id} className={`py-16 sm:py-24 ${tones[tone]} ${className}`}>
@@ -82,9 +83,19 @@ export function Lead({ children, className = "" }: { children: ReactNode; classN
   return <p className={`mt-5 max-w-2xl text-lg leading-relaxed sm:text-xl ${className}`}>{children}</p>;
 }
 
-export function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
+export function Card({
+  children,
+  className = "",
+  accent = false,
+}: {
+  children: ReactNode;
+  className?: string;
+  accent?: boolean;
+}) {
   return (
-    <div className={`rounded-lg border border-line bg-paper p-6 shadow-[0_1px_0_rgba(30,35,40,0.06)] ${className}`}>
+    <div
+      className={`rounded-lg border border-line bg-paper p-6 shadow-[0_1px_0_rgba(30,35,40,0.06)] ${accent ? "border-t-4 border-t-brand" : ""} ${className}`}
+    >
       {children}
     </div>
   );
