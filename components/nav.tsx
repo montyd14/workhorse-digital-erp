@@ -11,11 +11,6 @@ export function Nav() {
     <header className="sticky top-0 z-40 border-b border-line bg-cream/95 backdrop-blur">
       <div className="hidden bg-ink text-cream md:block">
         <div className="mx-auto flex h-8 w-full max-w-6xl items-center justify-end gap-5 px-4 text-xs font-semibold sm:px-6">
-          {telHref && (
-            <a href={telHref} className="mr-auto hover:text-brand-light">
-              Call {site.phoneDisplay}
-            </a>
-          )}
           {nav.logins.map((l) => (
             <Link key={l.href} href={l.href} className="inline-flex items-center gap-1.5 hover:text-brand-light">
               <LockIcon />
@@ -43,6 +38,11 @@ export function Nav() {
               aria-label={`Call ${site.phoneDisplay}`}
             >
               <PhoneIcon />
+            </a>
+          )}
+          {telHref && (
+            <a href={telHref} className="mr-2 hidden text-sm font-bold text-ink hover:text-brand-text md:inline">
+              {site.phoneDisplay}
             </a>
           )}
           <Link
