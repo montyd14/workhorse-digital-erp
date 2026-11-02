@@ -22,17 +22,17 @@ const steps = [
   {
     title: "Discovery call",
     time: "15 minutes",
-    body: "You tell us what the business does, where the time goes, and what is falling through the cracks. We tell you what we would build first and what we would leave alone. No pitch deck.",
+    body: "A short call to understand your business: what you do, where the hours go, and what keeps slipping through the cracks. We'll tell you plainly what we'd build first and what we'd leave alone.",
   },
   {
     title: "We build it, free",
     time: "2 to 6 weeks",
-    body: "We write the copy, design the screens, and build a working version around your business. You get a live preview link and we check in weekly. There is no deposit and nothing to sign.",
+    body: "We write the copy, design the screens, and build a working version around how your business runs. You get a live preview link and a quick check-in each week. No deposit. Nothing to sign.",
   },
   {
     title: "You try it on real work",
     time: "Up to 2 weeks",
-    body: "Put it on real customers, real routes, real calls. Ask for changes. We make them. You decide with the finished thing in your hands, not from a proposal.",
+    body: "Use it with real customers, real routes, and real calls. Want something changed? Tell us, and we'll change it. You decide with the finished product in your hands, not from a proposal.",
   },
   {
     title: "Approve and go live",
