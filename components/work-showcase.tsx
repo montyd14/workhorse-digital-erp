@@ -21,8 +21,7 @@ export function WorkShowcase() {
           </Link>
         </div>
         <ul className="mt-8 grid gap-6 md:grid-cols-3">
-          {work.map((w, i) => {
-            const tilt = ["md:-rotate-1", "md:rotate-1", "md:-rotate-[0.5deg]"][i % 3];
+          {work.map((w) => {
             const card = (
               <>
                 <div className="overflow-hidden rounded-t-lg border-b border-line">
@@ -55,7 +54,7 @@ export function WorkShowcase() {
                 </div>
               </>
             );
-            const cls = `group block h-full rounded-lg border-2 border-ink bg-cream shadow-[6px_6px_0_0_#1e2328] transition-transform hover:-translate-y-1 ${tilt}`;
+            const cls = `group block h-full rounded-lg border-2 border-ink bg-cream shadow-[6px_6px_0_0_#1e2328] transition-transform hover:-translate-y-1`;
             return (
               <li key={w.slug}>
                 {w.url ? (
