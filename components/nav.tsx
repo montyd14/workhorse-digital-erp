@@ -9,16 +9,6 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-cream/95 backdrop-blur">
-      <div className="hidden bg-ink text-cream md:block">
-        <div className="mx-auto flex h-8 w-full max-w-6xl items-center justify-end gap-5 px-4 text-xs font-semibold sm:px-6">
-          {nav.logins.map((l) => (
-            <Link key={l.href} href={l.href} className="inline-flex items-center gap-1.5 hover:text-brand-light">
-              <LockIcon />
-              {l.label}
-            </Link>
-          ))}
-        </div>
-      </div>
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 sm:px-6">
         <Logo />
 
@@ -51,6 +41,14 @@ export function Nav() {
           >
             {nav.cta.label}
           </Link>
+          <span className="ml-2 hidden items-center gap-3 border-l border-line pl-3 md:inline-flex">
+            {nav.logins.map((l) => (
+              <Link key={l.href} href={l.href} className="inline-flex items-center gap-1 text-xs font-bold text-ink-soft hover:text-brand-text">
+                <LockIcon />
+                {l.label}
+              </Link>
+            ))}
+          </span>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
