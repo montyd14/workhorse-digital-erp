@@ -43,7 +43,7 @@ export default function HomePage() {
         <Container className="grid items-center gap-8 py-12 sm:py-16 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
           <div>
             <Eyebrow className="text-brand-text-on-dark">{site.tagline}</Eyebrow>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl">
               We build your software first. <span className="text-brand">You pay only if you love it.</span>
             </h1>
             <Lead className="text-cream/85">

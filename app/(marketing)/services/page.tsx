@@ -27,7 +27,7 @@ export default function ServicesPage() {
         <Breadcrumbs items={crumbs} />
         <Eyebrow className="mt-6">What we build</Eyebrow>
         <H1>Services</H1>
-        <p className="mt-4 max-w-3xl font-heading text-2xl font-bold leading-tight text-ink-soft sm:text-3xl">
+        <p className="mt-4 max-w-3xl font-heading text-xl font-bold leading-tight text-ink-soft sm:text-2xl">
           Software built to do the work, not add to it.
         </p>
         <Lead>Every tool we build has one goal: more jobs booked, less time lost to paperwork.</Lead>

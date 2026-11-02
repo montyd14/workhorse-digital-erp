@@ -29,7 +29,7 @@
 }
 
 @theme inline {
-  --font-heading: var(--font-heading), "Arial Narrow", Impact, sans-serif;
+  --font-heading: var(--font-heading), "Helvetica Neue", Arial, sans-serif;
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -56,13 +56,9 @@
   h4 {
     font-family: var(--font-heading);
     font-weight: 800;
-    letter-spacing: 0.005em;
-    line-height: 1.02;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
     text-wrap: balance;
-  }
-  h1 {
-    text-transform: uppercase;
-    letter-spacing: 0.01em;
   }
 
   p {

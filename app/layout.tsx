@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Barlow, Barlow_Condensed } from "next/font/google";
+import { Archivo, Barlow } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@/components/analytics";
 import { site } from "@/lib/site";
 
-const heading = Barlow_Condensed({
+const heading = Archivo({
   subsets: ["latin"],
   weight: ["700", "800"],
   variable: "--font-heading",

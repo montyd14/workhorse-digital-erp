@@ -24,7 +24,7 @@ export function FinalCta({
           />
           <div className="relative max-w-2xl">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-cream">Ready when you are</p>
-            <h2 className="mt-2 text-4xl uppercase sm:text-5xl">{title}</h2>
+            <h2 className="mt-2 text-3xl sm:text-4xl">{title}</h2>
             <p className="mt-4 text-lg text-cream">{body}</p>
             <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
               <Button href={nav.cta.href} variant="secondary" size="lg">
