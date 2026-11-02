@@ -161,7 +161,7 @@ p {
     width: 100%;
     justify-content: center;
   }
-  .marquee-track > li:nth-child(n + 11) {
+  .marquee-track > li:nth-child(n + 14) {
     display: none;
   }
   .marquee {

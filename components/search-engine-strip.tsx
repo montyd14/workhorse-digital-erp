@@ -1,57 +1,52 @@
+import Image from "next/image";
+
 /**
- * Auto-scrolling strip of search engines and map services, shown under the hero.
- * Pure CSS marquee, pauses on hover, static for users who prefer reduced motion.
- * Text wordmarks only (no third-party logo files), each with its own accent color.
+ * Auto-scrolling strip of search engine and discovery platform logos under the hero.
+ * Logos come from the Simple Icons set (CC0) in public/logos. Pure CSS marquee,
+ * pauses on hover, static for users who prefer reduced motion.
  */
-const ENGINES = [
-  { name: "Google", color: "#4285f4" },
-  { name: "Bing", color: "#008373" },
-  { name: "DuckDuckGo", color: "#de5833" },
-  { name: "Yahoo", color: "#6001d2" },
-  { name: "Brave Search", color: "#fb542b" },
-  { name: "Google Maps", color: "#34a853" },
-  { name: "Apple Maps", color: "#1d1d1f" },
-  { name: "Ecosia", color: "#008009" },
-  { name: "Yelp", color: "#d32323" },
-  { name: "ChatGPT Search", color: "#10a37f" },
+const LOGOS = [
+  { file: "google", name: "Google" },
+  { file: "googlemaps", name: "Google Maps" },
+  { file: "duckduckgo", name: "DuckDuckGo" },
+  { file: "brave", name: "Brave Search" },
+  { file: "apple", name: "Apple Maps" },
+  { file: "perplexity", name: "Perplexity" },
+  { file: "ecosia", name: "Ecosia" },
+  { file: "yelp", name: "Yelp" },
+  { file: "qwant", name: "Qwant" },
+  { file: "startpage", name: "Startpage" },
+  { file: "nextdoor", name: "Nextdoor" },
+  { file: "facebook", name: "Facebook" },
+  { file: "instagram", name: "Instagram" },
 ];
 
-function Item({ name, color }: { name: string; color: string }) {
+function Logo({ file, name }: { file: string; name: string }) {
   return (
-    <li className="flex shrink-0 items-center gap-3 px-7">
-      <span className="h-3 w-3 rounded-full" style={{ backgroundColor: color }} aria-hidden="true" />
-      <span className="whitespace-nowrap font-heading text-xl font-extrabold tracking-tight text-ink sm:text-2xl">{name}</span>
+    <li className="flex shrink-0 items-center px-8">
+      <Image src={`/logos/${file}.svg`} alt={name} width={44} height={44} unoptimized className="h-10 w-10 sm:h-11 sm:w-11" />
     </li>
   );
 }
 
 export function SearchEngineStrip() {
   return (
-    <section aria-labelledby="found-everywhere" className="border-y-4 border-brand bg-paper py-8">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 id="found-everywhere" className="text-center text-sm font-bold uppercase tracking-[0.18em] text-brand-text">
-          Built to get found on every search engine
-        </h2>
-        <p className="mx-auto mt-2 max-w-2xl text-center text-ink-soft">
-          Every site we build ships with the speed, structured data, and local pages that search engines, map apps, and
-          AI assistants look for. When someone searches for what you do, you show up. Not just on Google.
-        </p>
-      </div>
-      <div className="marquee mt-6" aria-hidden="true">
+    <section aria-label="Where your customers will find you" className="border-y-4 border-brand bg-paper py-6">
+      <div className="marquee">
         <ul className="marquee-track flex w-max items-center">
-          {ENGINES.map((e) => (
-            <Item key={e.name} {...e} />
+          {LOGOS.map((l) => (
+            <Logo key={l.file} {...l} />
           ))}
-          {ENGINES.map((e) => (
-            <Item key={`${e.name}-dup`} {...e} />
+          {LOGOS.map((l) => (
+            <li key={`${l.file}-dup`} className="flex shrink-0 items-center px-8" aria-hidden="true">
+              <Image src={`/logos/${l.file}.svg`} alt="" width={44} height={44} unoptimized className="h-10 w-10 sm:h-11 sm:w-11" />
+            </li>
           ))}
         </ul>
       </div>
-      <ul className="sr-only">
-        {ENGINES.map((e) => (
-          <li key={e.name}>{e.name}</li>
-        ))}
-      </ul>
+      <p className="mt-5 text-center text-xs font-semibold uppercase tracking-[0.18em] text-ink-muted">
+        Built to get found on every search engine
+      </p>
     </section>
   );
 }
