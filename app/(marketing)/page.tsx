@@ -72,28 +72,6 @@ export default function HomePage() {
 
       <WorkShowcase />
 
-      {/* Problem */}
-      <Section tone="cream">
-        <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
-          <div>
-            <Eyebrow>The problem</Eyebrow>
-            <H2>Big agencies do not want your business. We built ours for it.</H2>
-          </div>
-          <div className="space-y-4 border-l-4 border-brand pl-6 text-lg leading-relaxed text-ink-soft">
-            <p>
-              If you run a vending route, a laundromat, a pressure washing crew, or a plumbing truck, you have heard the
-              pitch. Five-figure deposit. Six-month timeline. A template with your logo on it. Then a monthly bill for a
-              site that never rings the phone.
-            </p>
-            <p>
-              Owner-operated businesses do not need a flashy agency. They need software that pulls its weight: a site
-              that gets calls, a CRM that fits how you sell, a dashboard your crew will use, and a phone that gets
-              answered. That is what we build, and we build it first.
-            </p>
-          </div>
-        </div>
-      </Section>
-
       {/* How it works */}
       <Section tone="tint" id="how-it-works" className="pt-10 sm:pt-12">
         <Eyebrow>How it works</Eyebrow>
