@@ -26,13 +26,13 @@ export function FinalCta({
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-cream">Ready when you are</p>
             <h2 className="mt-2 text-4xl uppercase sm:text-5xl">{title}</h2>
             <p className="mt-4 text-lg text-cream">{body}</p>
-            <div className="mt-7 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
+            <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
               <Button href={nav.cta.href} variant="secondary" size="lg">
                 {nav.cta.label}
               </Button>
-              <a href={nav.secondaryCta.href} className="font-semibold text-cream underline decoration-2 underline-offset-4 hover:text-white">
-                or book a 15-minute call
-              </a>
+              <Button href={nav.secondaryCta.href} variant="onDark" size="lg">
+                Book a 15-Minute Call
+              </Button>
             </div>
             {telHref && (
               <p className="mt-6 text-sm text-cream">
