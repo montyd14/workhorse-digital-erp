@@ -55,6 +55,7 @@ Useful scripts:
 
 - **Industry page:** copy `content/industries/vending.ts`, change the fields, import and add it to the array in `content/industries/index.ts`. The landing page, sitemap entry, form dropdown, footer link, and service cross-links are generated.
 - **Blog post:** add an `.mdx` file to `content/blog/` with `title`, `description`, `publishedAt`, optional `industry` (slug) and `services` (array of service slugs) in the frontmatter.
+- **Showcase (Our Work):** `content/work.ts`. Demo entries link to the demo pages under `app/demo/` with screenshots in `public/work/`. For a real client, set `url` to their domain, replace the screenshot, and remove `badge`.
 - **Brand colors and fonts:** `app/globals.css` (`@theme` block) and the two `next/font` loaders in `app/layout.tsx`.
 - **Phone, email, booking link, social links:** env vars, see `.env.example`.
 

@@ -4,7 +4,7 @@ export type WorkItem = {
   slug: string;
   name: string;
   industry: string;
-  /** Optional live URL. When set, the card links out. */
+  /** Live URL. Demo entries point at the in-repo demo pages; real clients point at their domain. */
   url?: string;
   /** Optional screenshot in public/work/<file>. 1200x750 recommended. When absent, a styled mock is shown. */
   image?: string;
@@ -24,6 +24,8 @@ export type WorkItem = {
 export const work: WorkItem[] = [
   {
     slug: "route-ready-vending",
+    url: "/demo/route-ready-vending",
+    image: "route-ready-vending.jpg",
     name: "Route Ready Vending",
     industry: "Vending operator",
     blurb: "Placement site with machine pages, a quote form wired to the CRM, and local pages for three counties.",
@@ -33,6 +35,8 @@ export const work: WorkItem[] = [
   },
   {
     slug: "clearline-pressure-washing",
+    url: "/demo/clearline-pressure-washing",
+    image: "clearline-pressure-washing.jpg",
     name: "Clearline Pressure Washing",
     industry: "Pressure washing",
     blurb: "Before-and-after galleries, instant quote request, and a job board the crew runs from their phones.",
@@ -42,6 +46,8 @@ export const work: WorkItem[] = [
   },
   {
     slug: "bluewater-pool-care",
+    url: "/demo/bluewater-pool-care",
+    image: "bluewater-pool-care.jpg",
     name: "Bluewater Pool Care",
     industry: "Pool service",
     blurb: "Weekly-service booking site plus a customer login that shows visit history, readings, and photos.",

@@ -27,7 +27,7 @@ export function WorkShowcase() {
               <>
                 <div className="overflow-hidden rounded-md border border-line">
                   {w.image ? (
-                    <Image src={`/work/${w.image}`} alt={`${w.name} website`} width={1200} height={900} className="aspect-[4/3] w-full object-cover object-top" />
+                    <Image src={`/work/${w.image}`} alt={`${w.name} website`} width={1200} height={900} sizes="(min-width: 768px) 33vw, 100vw" className="aspect-[4/3] w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]" />
                   ) : (
                     <Tile name={w.name} industry={w.industry} accent={w.accent} />
                   )}
@@ -46,7 +46,7 @@ export function WorkShowcase() {
             return (
               <li key={w.slug}>
                 {w.url ? (
-                  <a href={w.url} target="_blank" rel="noopener" className="group block">
+                  <a href={w.url} target={w.url.startsWith("http") ? "_blank" : undefined} rel={w.url.startsWith("http") ? "noopener" : undefined} className="group block">
                     {inner}
                   </a>
                 ) : (
