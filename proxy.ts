@@ -22,7 +22,7 @@ export function proxy(request: NextRequest) {
 
   if (!loginEnabled || !hasSession) {
     const url = request.nextUrl.clone();
-    url.pathname = "/login";
+    url.pathname = "/login/team";
     url.search = loginEnabled ? `?next=${encodeURIComponent(pathname)}` : "";
     return NextResponse.redirect(url);
   }

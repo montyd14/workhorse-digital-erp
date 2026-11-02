@@ -1,18 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Roboto_Slab } from "next/font/google";
+import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@/components/analytics";
 import { site } from "@/lib/site";
 
-const heading = Roboto_Slab({
+const heading = Barlow_Condensed({
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
+  weight: ["700", "800"],
   variable: "--font-heading",
   display: "swap",
 });
 
-const body = Inter({
+const body = Barlow({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });

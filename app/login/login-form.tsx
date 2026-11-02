@@ -14,7 +14,7 @@ export function LoginForm() {
       });
     } catch (err) {
       if (err instanceof AuthError) {
-        redirect("/login?error=1");
+        redirect("/login/team?error=1");
       }
       throw err;
     }

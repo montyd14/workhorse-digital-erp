@@ -9,7 +9,7 @@ export function FinalCta({
   body?: string;
 }) {
   return (
-    <section className="bg-brand-text py-16 text-cream sm:py-20">
+    <section className="bg-brand-text py-12 text-cream sm:py-16">
       <Container className="text-center">
         <h2 className="mx-auto max-w-3xl text-3xl sm:text-4xl">{title}</h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-cream">{body}</p>

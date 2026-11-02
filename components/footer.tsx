@@ -106,6 +106,11 @@ export function Footer() {
                 Client Login
               </Link>
             </li>
+            <li>
+              <Link href="/login/team" className="hover:text-cream">
+                Team Login
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

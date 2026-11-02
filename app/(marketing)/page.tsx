@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FinalCta } from "@/components/cta";
+import { HeroMark } from "@/components/hero-mark";
 import { SearchEngineStrip } from "@/components/search-engine-strip";
+import { StepsScroller } from "@/components/steps-scroller";
+import { WorkShowcase } from "@/components/work-showcase";
 import { ServiceIcon } from "@/components/service-icon";
 import { FaqList } from "@/components/faq";
 import { Button, Card, Container, Eyebrow, H2, Lead, Section } from "@/components/ui";
@@ -18,10 +21,10 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const steps = [
-  { title: "Discovery call", body: "Fifteen minutes. You tell us what slows the business down. We tell you plainly what we would build." },
-  { title: "We build it free", body: "No deposit. No contract. We build a working version around your business, not a template." },
-  { title: "You try it and approve", body: "Use it on real customers and real routes. Ask for changes. Decide with the thing in your hands." },
-  { title: "You pay only if you keep it", body: "A flat setup fee and a flat monthly fee, quoted up front. If it does not earn its keep, walk away." },
+  { title: "Discovery call", time: "15 minutes", body: "You tell us what slows the business down. We tell you plainly what we would build first, and what we would leave alone." },
+  { title: "We build it free", time: "2 to 6 weeks", body: "No deposit. No contract. We build a working version around your business, not a template, and send you a live preview link." },
+  { title: "You try it and approve", time: "Up to 2 weeks", body: "Use it on real customers and real routes. Ask for changes. Decide with the finished thing in your hands." },
+  { title: "You pay only if you keep it", time: "Flat fees", body: "A flat setup fee and a flat monthly fee, quoted up front. If it does not earn its keep, walk away owing nothing." },
 ];
 
 const homeFaqs = [
@@ -37,17 +40,17 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section className="border-t-8 border-brand bg-ink text-cream">
-        <Container className="grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-[1.2fr_1fr]">
+        <Container className="grid items-center gap-8 py-12 sm:py-16 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
           <div>
             <Eyebrow className="text-brand-text-on-dark">{site.tagline}</Eyebrow>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl">
               We build your software first. <span className="text-brand">You pay only if you love it.</span>
             </h1>
             <Lead className="text-cream/85">
               Websites, CRMs, operations dashboards, and call handling for owner-operated businesses the big agencies
               ignore. No deposit. No risk. See it working before you spend a dollar.
             </Lead>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Button href={nav.cta.href} size="lg">
                 {nav.cta.label}
               </Button>
@@ -55,39 +58,23 @@ export default function HomePage() {
                 {nav.secondaryCta.label}
               </Button>
             </div>
-            <ul className="mt-8 flex flex-wrap gap-2 text-sm font-semibold">
-              <li className="rounded-full border border-brand/60 bg-brand/15 px-3 py-1 text-brand-light">No upfront cost</li>
-              <li className="rounded-full border border-gold/60 bg-gold/15 px-3 py-1 text-gold">Flat monthly fee</li>
-              <li className="rounded-full border border-cream/40 bg-cream/10 px-3 py-1 text-cream">Optimized for Mobile and Desktop</li>
-              <li className="rounded-full border border-brand-light/60 bg-brand-light/15 px-3 py-1 text-brand-light">Risk-free Demo</li>
+            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-cream/70">
+              <li>No upfront cost</li>
+              <li>Optimized for Mobile and Desktop</li>
+              <li>Risk-free Demo</li>
             </ul>
           </div>
-          <div className="hidden lg:block">
-            <div className="rounded-lg border border-cream/15 bg-ink-soft/50 p-6">
-              <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-text-on-dark">The offer</p>
-              <ol className="mt-4 space-y-4">
-                {steps.map((s, i) => (
-                  <li key={s.title} className="flex gap-4">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand font-heading font-extrabold text-white">
-                      {i + 1}
-                    </span>
-                    <div>
-                      <p className="font-semibold">{s.title}</p>
-                      <p className="text-sm text-cream/75">{s.body}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </div>
+          <HeroMark />
         </Container>
       </section>
 
       <SearchEngineStrip />
 
+      <WorkShowcase />
+
       {/* Problem */}
       <Section tone="cream">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+        <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
           <div>
             <Eyebrow>The problem</Eyebrow>
             <H2>Big agencies do not want your business. We built ours for it.</H2>
@@ -108,20 +95,12 @@ export default function HomePage() {
       </Section>
 
       {/* How it works */}
-      <Section tone="tint" id="how-it-works">
+      <Section tone="tint" id="how-it-works" className="pt-10 sm:pt-12">
         <Eyebrow>How it works</Eyebrow>
         <H2>Four steps. No deposit. No surprises.</H2>
-        <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((s, i) => (
-            <li key={s.title}>
-              <Card className="h-full" accent>
-                <span className="font-heading text-4xl font-extrabold text-brand">0{i + 1}</span>
-                <h3 className="mt-3 text-xl">{s.title}</h3>
-                <p className="mt-2 text-ink-soft">{s.body}</p>
-              </Card>
-            </li>
-          ))}
-        </ol>
+        <div className="mt-6">
+          <StepsScroller steps={steps} />
+        </div>
         <div className="mt-8">
           <Link href="/how-it-works" className="font-semibold text-rust underline underline-offset-4 hover:text-brand">
             Read the full free-build model, including cost, timeline, and ownership
@@ -133,7 +112,7 @@ export default function HomePage() {
       <Section tone="cream">
         <Eyebrow>What we build</Eyebrow>
         <H2>Four tools. One flat fee. Built around how your business runs.</H2>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
           {services.map((s) => (
             <Card key={s.slug} className="flex flex-col">
               <ServiceIcon slug={s.slug} />
@@ -158,7 +137,7 @@ export default function HomePage() {
           We started with vending operators and expanded to the industries that run the same way: on the phone, on the
           road, and without a marketing department.
         </p>
-        <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {industries.map((i) => (
             <li key={i.slug}>
               <Link
@@ -175,7 +154,7 @@ export default function HomePage() {
 
       {/* FAQ */}
       <Section tone="tint">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr]">
+        <div className="grid gap-6 lg:grid-cols-[1fr_1.6fr]">
           <div>
             <Eyebrow>Questions</Eyebrow>
             <H2>Straight answers.</H2>

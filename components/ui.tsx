@@ -59,7 +59,7 @@ export function Section({
     tint: "bg-brand-tint text-ink",
   };
   return (
-    <section id={id} className={`py-16 sm:py-24 ${tones[tone]} ${className}`}>
+    <section id={id} className={`py-12 sm:py-16 ${tones[tone]} ${className}`}>
       <Container>{children}</Container>
     </section>
   );
@@ -72,11 +72,11 @@ export function Eyebrow({ children, className = "" }: { children: ReactNode; cla
 }
 
 export function H1({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <h1 className={`text-4xl sm:text-5xl lg:text-6xl ${className}`}>{children}</h1>;
+  return <h1 className={`text-5xl sm:text-6xl lg:text-7xl ${className}`}>{children}</h1>;
 }
 
 export function H2({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <h2 className={`text-3xl sm:text-4xl ${className}`}>{children}</h2>;
+  return <h2 className={`text-4xl sm:text-5xl ${className}`}>{children}</h2>;
 }
 
 export function Lead({ children, className = "" }: { children: ReactNode; className?: string }) {

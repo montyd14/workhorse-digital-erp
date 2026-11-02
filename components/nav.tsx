@@ -9,6 +9,21 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-cream/95 backdrop-blur">
+      <div className="hidden bg-ink text-cream md:block">
+        <div className="mx-auto flex h-8 w-full max-w-6xl items-center justify-end gap-5 px-4 text-xs font-semibold sm:px-6">
+          {telHref && (
+            <a href={telHref} className="mr-auto hover:text-brand-light">
+              Call {site.phoneDisplay}
+            </a>
+          )}
+          {nav.logins.map((l) => (
+            <Link key={l.href} href={l.href} className="inline-flex items-center gap-1.5 hover:text-brand-light">
+              <LockIcon />
+              {l.label}
+            </Link>
+          ))}
+        </div>
+      </div>
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 sm:px-6">
         <Logo />
 
@@ -28,11 +43,6 @@ export function Nav() {
               aria-label={`Call ${site.phoneDisplay}`}
             >
               <PhoneIcon />
-            </a>
-          )}
-          {telHref && (
-            <a href={telHref} className="hidden text-sm font-semibold text-ink hover:text-brand lg:inline">
-              {site.phoneDisplay}
             </a>
           )}
           <Link
@@ -68,6 +78,14 @@ export function Nav() {
                 </Link>
               </li>
             ))}
+            {nav.logins.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} onClick={() => setOpen(false)} className="flex items-center gap-2 py-3 text-base font-semibold text-ink-soft">
+                  <LockIcon />
+                  {l.label}
+                </Link>
+              </li>
+            ))}
             <li className="pt-2">
               <Link
                 href={nav.cta.href}
@@ -88,6 +106,14 @@ function PhoneIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.8 2z" />
+    </svg>
+  );
+}
+function LockIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="4" y="10" width="16" height="11" rx="2" />
+      <path d="M8 10V7a4 4 0 0 1 8 0v3" />
     </svg>
   );
 }

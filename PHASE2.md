@@ -12,7 +12,7 @@ team runs the agency from. This document records what is already in place and wh
 | Route protection | `proxy.ts` | Redirects `/dashboard`, `/crm`, `/erp` to `/login` when no session |
 | Role helpers | `lib/auth.ts` (`hasRole`, `requireRole`) | Ready for page and action guards |
 | Private layout | `app/(app)/layout.tsx` | Sidebar shell with placeholder nav |
-| Login page | `app/login/` | Styled; shows placeholder until the flag is on |
+| Login pages | `app/login/` (client portal), `app/login/team/` (team / ERP) | Styled; team form appears when the flag is on |
 
 ## Schema
 
@@ -65,7 +65,7 @@ Record only. Card billing happens in Square outside the system. TODO: line items
    // prisma/seed.ts (to be added)
    await db.user.create({ data: { email, name, role: "ADMIN", passwordHash: await bcrypt.hash(password, 12) } });
    ```
-3. `/login` renders the real form. The proxy allows `(app)` routes once the session cookie exists.
+3. `/login/team` renders the real form. The proxy allows `(app)` routes once the session cookie exists.
 
 ## Where each feature plugs in
 
