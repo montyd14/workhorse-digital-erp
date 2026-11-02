@@ -79,10 +79,11 @@ export default function HomePage() {
         <div className="mt-6">
           <StepsScroller steps={steps} />
         </div>
-        <div className="mt-8">
-          <Link href="/how-it-works" className="font-semibold text-rust underline underline-offset-4 hover:text-brand">
-            Read the full free-build model, including cost, timeline, and ownership
-          </Link>
+        <div className="mt-10 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-5">
+          <Button href="/how-it-works" variant="ghost">
+            Cost, timeline, and ownership
+          </Button>
+          <p className="text-sm text-ink-muted">The full free-build model, in plain language.</p>
         </div>
       </Section>
 
