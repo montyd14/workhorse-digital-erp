@@ -19,10 +19,22 @@ const crumbs = [
 ];
 
 const values = [
-  { title: "Build first", body: "Proposals are promises. A working product is proof. We show, then ask." },
-  { title: "Plain language", body: "No jargon on the call, no jargon in the software. If your crew cannot use it, it is not done." },
-  { title: "Flat pricing", body: "One setup fee, one monthly fee. You should never have to do math to know what we cost." },
-  { title: "Owner-operators first", body: "We build for the businesses that run on a phone and a truck, because that is who gets ignored." },
+  {
+    title: "Build first",
+    body: "A proposal is a promise. A working product is proof. We show you the finished work before we ask for a decision.",
+  },
+  {
+    title: "Plain language",
+    body: "No jargon on the call and none in the software. If your crew cannot use it on day one, it is not finished.",
+  },
+  {
+    title: "Flat pricing",
+    body: "One setup fee and one monthly fee, both quoted up front. You should never need a calculator to know what we cost.",
+  },
+  {
+    title: "Owner-operators first",
+    body: "We build for businesses that run from a phone and a truck, because they are the ones larger agencies overlook.",
+  },
 ];
 
 export default function AboutPage() {
@@ -83,12 +95,12 @@ export default function AboutPage() {
         <ol className="mt-10 grid gap-8 sm:grid-cols-2">
           {values.map((v, i) => (
             <li key={v.title} className="flex gap-4">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-ink font-heading text-lg font-extrabold text-cream">
-                {i + 1}
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-ink font-heading text-base font-extrabold tabular-nums text-cream">
+                {String(i + 1).padStart(2, "0")}
               </span>
               <div>
                 <h3 className="text-xl">{v.title}</h3>
-                <p className="mt-1.5 text-ink-soft">{v.body}</p>
+                <p className="mt-2 leading-relaxed text-ink-soft">{v.body}</p>
               </div>
             </li>
           ))}
