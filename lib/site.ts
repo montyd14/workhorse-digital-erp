@@ -39,9 +39,6 @@ export const nav = {
     { href: "/about", label: "About" },
   ],
   cta: { href: "/free-build", label: "Get Your Free Build" },
-  logins: [
-    { href: "/login", label: "Client Login" },
-    { href: "/login/team", label: "Team Login" },
-  ],
+  login: { href: "/login", label: "Log In" },
   secondaryCta: { href: site.bookingUrl, label: "Book a 15-Min Call" },
 } as const;

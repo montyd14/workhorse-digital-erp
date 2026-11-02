@@ -41,14 +41,13 @@ export function Nav() {
           >
             {nav.cta.label}
           </Link>
-          <span className="ml-2 hidden items-center gap-3 border-l border-line pl-3 md:inline-flex">
-            {nav.logins.map((l) => (
-              <Link key={l.href} href={l.href} className="inline-flex items-center gap-1 text-xs font-bold text-ink-soft hover:text-brand-text">
-                <LockIcon />
-                {l.label}
-              </Link>
-            ))}
-          </span>
+          <Link
+            href={nav.login.href}
+            className="hidden items-center gap-1.5 rounded-md border-2 border-ink px-3.5 py-2 text-sm font-bold text-ink hover:bg-ink hover:text-cream md:inline-flex"
+          >
+            <LockIcon />
+            {nav.login.label}
+          </Link>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -76,14 +75,12 @@ export function Nav() {
                 </Link>
               </li>
             ))}
-            {nav.logins.map((l) => (
-              <li key={l.href}>
-                <Link href={l.href} onClick={() => setOpen(false)} className="flex items-center gap-2 py-3 text-base font-semibold text-ink-soft">
-                  <LockIcon />
-                  {l.label}
-                </Link>
-              </li>
-            ))}
+            <li>
+              <Link href={nav.login.href} onClick={() => setOpen(false)} className="flex items-center gap-2 py-3 text-base font-semibold text-ink-soft">
+                <LockIcon />
+                {nav.login.label}
+              </Link>
+            </li>
             <li className="pt-2">
               <Link
                 href={nav.cta.href}
