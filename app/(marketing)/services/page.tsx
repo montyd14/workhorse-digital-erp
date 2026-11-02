@@ -30,10 +30,21 @@ export default function ServicesPage() {
         <p className="mt-4 max-w-3xl font-heading text-2xl font-bold leading-tight text-ink-soft sm:text-3xl">
           Software built to do the work, not add to it.
         </p>
-        <Lead>
-          Everything we build has the same goal: more jobs booked and less time lost to admin. Start with one tool or
-          combine several. We build each one at no cost, and you keep it only if it earns its place.
-        </Lead>
+        <Lead>Every tool we build has one goal: more jobs booked, less time lost to paperwork.</Lead>
+        <ul className="mt-5 grid max-w-2xl gap-2.5 text-lg">
+          {[
+            "Start with one tool or combine several.",
+            "We build it first, at no cost to you.",
+            "You keep it only if it earns its place.",
+          ].map((line) => (
+            <li key={line} className="flex items-start gap-3">
+              <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-text text-xs font-bold text-white" aria-hidden="true">
+                &#10003;
+              </span>
+              {line}
+            </li>
+          ))}
+        </ul>
       </Section>
       <Section tone="paper" className="pt-4">
         <div className="grid gap-6 md:grid-cols-2">
