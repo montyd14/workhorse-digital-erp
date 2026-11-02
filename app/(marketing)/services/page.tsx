@@ -26,10 +26,10 @@ export default function ServicesPage() {
       <Section tone="cream" className="pb-10">
         <Breadcrumbs items={crumbs} />
         <Eyebrow className="mt-6">Services</Eyebrow>
-        <H1>Software that does a job, not software that makes one.</H1>
+        <H1>Software built to do the work, not add to it.</H1>
         <Lead>
-          Every tool we build has one purpose: more work booked, less time wasted. Pick one or combine them. Each is
-          built first at no cost and kept only if it earns its place.
+          Everything we build has the same goal: more jobs booked and less time lost to admin. Start with one tool or
+          combine several. We build each one at no cost, and you keep it only if it earns its place.
         </Lead>
       </Section>
       <Section tone="paper" className="pt-4">
