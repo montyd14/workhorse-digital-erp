@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import { DemoCredits } from "@/components/demo-credits";
 
 export const metadata: Metadata = { title: "Bluewater Pool Care" };
 
@@ -30,7 +32,7 @@ export default function BluewaterDemo() {
         </div>
       </header>
 
-      <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 md:grid-cols-2">
+      <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 md:grid-cols-[1fr_1.1fr]">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#1f8a8a]">Boca Raton · Delray · Boynton</p>
           <h1 className="mt-3 font-heading text-5xl font-extrabold uppercase leading-none md:text-6xl">
@@ -45,34 +47,35 @@ export default function BluewaterDemo() {
             <span className="rounded-full border-2 border-[#0f2a2a] px-5 py-3 font-bold">See a sample report</span>
           </div>
         </div>
-        <div className="rounded-xl bg-white p-5 shadow-[0_10px_40px_rgba(15,42,42,0.08)]">
-          <div className="flex items-center justify-between">
-            <p className="font-heading text-lg font-extrabold">Service report · Tue, Jun 3</p>
-            <span className="rounded-full bg-[#e0f2f1] px-2.5 py-0.5 text-xs font-bold text-[#1f8a8a]">Completed 9:42 AM</span>
+        <div className="relative">
+          <Image src="/demo/pool-hero.jpg" alt="Clean backyard swimming pool" width={1600} height={1197} priority className="aspect-[4/3] w-full rounded-xl object-cover" />
+          <div className="absolute -bottom-6 -left-4 w-72 rounded-xl bg-white p-4 shadow-[0_10px_40px_rgba(15,42,42,0.18)]">
+            <div className="flex items-center justify-between">
+              <p className="font-heading text-base font-extrabold">Service report · Tue</p>
+              <span className="rounded-full bg-[#e0f2f1] px-2 py-0.5 text-[0.65rem] font-bold text-[#1f8a8a]">9:42 AM</span>
+            </div>
+            <div className="mt-3 grid grid-cols-4 gap-1.5 text-center">
+              {[
+                ["7.4", "pH"],
+                ["2.5", "Cl"],
+                ["90", "Alk"],
+                ["45", "CYA"],
+              ].map(([v, l]) => (
+                <div key={l} className="rounded-md bg-[#f3f8f8] py-2">
+                  <p className="font-heading text-lg font-extrabold leading-none">{v}</p>
+                  <p className="text-[0.65rem] text-[#5a7474]">{l}</p>
+                </div>
+              ))}
+            </div>
+            <ul className="mt-3 space-y-1 text-xs">
+              <li className="flex gap-1.5"><span className="text-[#1f8a8a]">&#10003;</span> Skimmed, brushed, vacuumed</li>
+              <li className="flex gap-1.5"><span className="text-[#1f8a8a]">&#10003;</span> Added 1 lb shock</li>
+            </ul>
           </div>
-          <div className="mt-4 grid grid-cols-4 gap-2 text-center">
-            {[
-              ["7.4", "pH"],
-              ["2.5", "Chlorine"],
-              ["90", "Alkalinity"],
-              ["45", "CYA"],
-            ].map(([v, l]) => (
-              <div key={l} className="rounded-lg bg-[#f3f8f8] py-3">
-                <p className="font-heading text-2xl font-extrabold">{v}</p>
-                <p className="text-xs text-[#5a7474]">{l}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-4 h-28 rounded-lg bg-[linear-gradient(180deg,#9fdbe3_0%,#3fb3c4_100%)]" />
-          <ul className="mt-4 space-y-1.5 text-sm">
-            <li className="flex gap-2"><span className="text-[#1f8a8a]">&#10003;</span> Skimmed, brushed walls, vacuumed</li>
-            <li className="flex gap-2"><span className="text-[#1f8a8a]">&#10003;</span> Emptied baskets, rinsed filter</li>
-            <li className="flex gap-2"><span className="text-[#1f8a8a]">&#10003;</span> Added 1 lb shock, 1 qt algaecide</li>
-          </ul>
         </div>
       </section>
 
-      <section className="bg-white py-12">
+      <section className="bg-white py-14">
         <div className="mx-auto max-w-6xl px-5">
           <h2 className="font-heading text-3xl font-extrabold uppercase">Simple monthly pricing</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
@@ -93,6 +96,9 @@ export default function BluewaterDemo() {
           </div>
         </div>
       </section>
+      <DemoCredits
+        credits={[{ what: "Backyard pool", by: "Vic Brincat", license: "CC BY 2.0", href: "https://commons.wikimedia.org/wiki/File:Backyardpool.jpg" }]}
+      />
     </div>
   );
 }

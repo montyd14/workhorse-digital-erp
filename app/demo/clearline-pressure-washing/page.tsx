@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import { DemoCredits } from "@/components/demo-credits";
 
 export const metadata: Metadata = { title: "Clearline Pressure Washing" };
 
@@ -14,7 +16,7 @@ export default function ClearlineDemo() {
           </span>
           <nav className="hidden gap-7 text-sm font-semibold md:flex">
             <span>Services</span>
-            <span>Before &amp; after</span>
+            <span>Our work</span>
             <span>Reviews</span>
             <span>Areas</span>
           </nav>
@@ -22,14 +24,15 @@ export default function ClearlineDemo() {
         </div>
       </header>
 
-      <section className="bg-[#0b5c8a] text-white">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 md:grid-cols-[1.1fr_1fr]">
+      <section className="relative overflow-hidden bg-[#0b5c8a] text-white">
+        <Image src="/demo/pw-action.jpg" alt="" width={1600} height={1060} priority className="absolute inset-0 h-full w-full object-cover opacity-25" />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 md:grid-cols-[1.1fr_1fr]">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#38bdf8]">Licensed &amp; insured · Fort Lauderdale</p>
             <h1 className="mt-3 font-heading text-5xl font-extrabold uppercase leading-none md:text-6xl">
               Your driveway, like the day it was poured.
             </h1>
-            <p className="mt-5 max-w-lg text-lg text-white/85">
+            <p className="mt-5 max-w-lg text-lg text-white/90">
               Send two photos. Get a firm price back the same morning. We show up when we say, and the before-and-after
               speaks for itself.
             </p>
@@ -39,40 +42,47 @@ export default function ClearlineDemo() {
             </div>
             <div className="mt-6 flex items-center gap-2 text-sm">
               <span className="text-[#fbbf24]">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-              <span className="text-white/80">4.9 from 312 Google reviews</span>
+              <span className="text-white/85">4.9 from 312 Google reviews</span>
             </div>
           </div>
-          <div className="relative overflow-hidden rounded-lg border-4 border-white/20">
-            <div className="grid h-72 grid-cols-2">
-              <div className="relative bg-[linear-gradient(160deg,#6b705c_0%,#4e5340_50%,#3a3d2f_100%)]">
-                <span className="absolute left-3 top-3 rounded bg-black/60 px-2 py-0.5 text-xs font-bold">BEFORE</span>
-              </div>
-              <div className="relative bg-[linear-gradient(160deg,#d6d3cc_0%,#bfbbb2_50%,#a9a59b_100%)]">
-                <span className="absolute right-3 top-3 rounded bg-[#38bdf8] px-2 py-0.5 text-xs font-bold text-[#10202b]">AFTER</span>
-              </div>
-            </div>
-            <div className="absolute inset-y-0 left-1/2 w-1 -translate-x-1/2 bg-white" />
-            <div className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#10202b]">
-              &#8596;
-            </div>
+          <div className="overflow-hidden rounded-lg border-4 border-white/30 shadow-2xl">
+            <Image src="/demo/pw-action.jpg" alt="Pressure washing in progress" width={1600} height={1060} className="aspect-[4/3] w-full object-cover" />
           </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-12">
-        <div className="flex items-end justify-between">
-          <h2 className="font-heading text-3xl font-extrabold uppercase">What we clean</h2>
-          <span className="text-sm font-semibold text-[#0b5c8a] underline">All services</span>
+        <div className="grid gap-8 md:grid-cols-[1fr_1.2fr] md:items-center">
+          <div className="grid grid-cols-2 gap-3">
+            <div className="relative overflow-hidden rounded-lg">
+              <Image src="/demo/pw-before.jpg" alt="Stained pavement before cleaning" width={800} height={450} className="aspect-square w-full object-cover" />
+              <span className="absolute left-3 top-3 rounded bg-black/70 px-2 py-0.5 text-xs font-bold text-white">BEFORE</span>
+            </div>
+            <div className="relative overflow-hidden rounded-lg">
+              <Image src="/demo/pw-commercial.jpg" alt="Commercial pressure washing" width={800} height={620} className="aspect-square w-full object-cover" />
+              <span className="absolute left-3 top-3 rounded bg-[#38bdf8] px-2 py-0.5 text-xs font-bold text-[#10202b]">COMMERCIAL</span>
+            </div>
+          </div>
+          <div>
+            <h2 className="font-heading text-3xl font-extrabold uppercase">What we clean</h2>
+            <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+              {services.map((s) => (
+                <li key={s} className="flex items-center gap-3 rounded border border-[#dbe4ea] p-3 text-sm font-semibold">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#38bdf8]" />
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <ul className="mt-6 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
-          {services.map((s) => (
-            <li key={s} className="flex items-center gap-3 rounded border border-[#dbe4ea] p-4 font-semibold">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#38bdf8]" />
-              {s}
-            </li>
-          ))}
-        </ul>
       </section>
+      <DemoCredits
+        credits={[
+          { what: "Land Rover being pressure washed", by: "Lewis Collard", license: "CC BY 3.0", href: "https://commons.wikimedia.org/wiki/File:Land_Rover_being_pressure_washed.JPG" },
+          { what: "Soiled granite surface", by: "OathOn", license: "CC BY-SA 4.0", href: "https://commons.wikimedia.org/wiki/File:Heavily_soiled_granite_surface_with_ingrained_dirt_showing_complete_absence_of_pressure_washing_by_Medway_Norse_at_The_Paddock_park,_Chatham,_Kent,_England.jpg" },
+          { what: "High-pressure cleaning", by: "CEphoto, Uwe Aranas", license: "CC BY-SA 3.0", href: "https://commons.wikimedia.org/wiki/File:High-pressure-cleaning-of-a-concrete-floor-in-petrochemical-industry-01.jpg" },
+        ]}
+      />
     </div>
   );
 }

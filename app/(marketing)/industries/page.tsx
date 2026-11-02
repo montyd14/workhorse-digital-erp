@@ -28,8 +28,8 @@ export default function IndustriesPage() {
         <Eyebrow className="mt-6">Industries</Eyebrow>
         <H1>Built for trades that run on the phone.</H1>
         <Lead>
-          We started with vending operators and expanded to the businesses that work the same way: owner-operated,
-          on the road, and ignored by the agencies that chase bigger logos. If your industry is not listed, ask. If it
+          We began with vending operators and now serve the businesses that operate the same way: owner-run,
+          field-based, and overlooked by agencies chasing bigger accounts. If your industry is not listed, ask. If it
           runs on inbound calls and routes, we can build for it.
         </Lead>
       </Section>

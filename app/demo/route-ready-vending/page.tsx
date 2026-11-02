@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import { DemoCredits } from "@/components/demo-credits";
 
 export const metadata: Metadata = { title: "Route Ready Vending" };
 
 const machines = [
-  { name: "Snack + drink combo", fit: "Breakrooms with 25 to 80 staff", note: "Most popular" },
-  { name: "Cold drink tower", fit: "Gyms, lobbies, warehouses", note: "Card + mobile pay" },
-  { name: "Fresh food cooler", fit: "Offices with 100+ staff", note: "Stocked 3x weekly" },
+  { name: "Snack + drink combo", fit: "Breakrooms with 25 to 80 staff", note: "Most popular", img: "/demo/vending-lobby.jpg", pos: "object-right" },
+  { name: "Snack tower", fit: "Lobbies, waiting rooms, gyms", note: "Card + mobile pay", img: "/demo/vending-snacks.jpg", pos: "object-center" },
+  { name: "Cold drink cooler", fit: "Warehouses and shop floors", note: "Stocked 3x weekly", img: "/demo/vending-lobby.jpg", pos: "object-left" },
 ];
 
 export default function RouteReadyDemo() {
@@ -27,7 +29,7 @@ export default function RouteReadyDemo() {
         </div>
       </header>
 
-      <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 md:grid-cols-2">
+      <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 md:grid-cols-[1fr_1.1fr]">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#d9531e]">Palm Beach &amp; Broward County</p>
           <h1 className="mt-3 font-heading text-5xl font-extrabold uppercase leading-none md:text-6xl">
@@ -43,44 +45,46 @@ export default function RouteReadyDemo() {
           </div>
           <p className="mt-5 text-sm text-[#6b665c]">No contract. No cost to the location. Commission available for 50+ staff.</p>
         </div>
-        <div className="grid grid-cols-2 gap-3">
-          <div className="row-span-2 rounded-lg bg-[#1c1a17] p-5 text-white">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#f0a98e]">Placed this year</p>
-            <p className="mt-2 font-heading text-6xl font-extrabold">212</p>
-            <p className="text-sm text-white/70">machines across 140 locations</p>
-            <div className="mt-6 space-y-2 text-sm">
-              <p className="flex justify-between border-t border-white/10 pt-2"><span>Avg restock</span><span className="font-bold">5 days</span></p>
-              <p className="flex justify-between border-t border-white/10 pt-2"><span>Service response</span><span className="font-bold">Same day</span></p>
-              <p className="flex justify-between border-t border-white/10 pt-2"><span>Card + tap pay</span><span className="font-bold">Every machine</span></p>
+        <div className="relative">
+          <Image src="/demo/vending-lobby.jpg" alt="Snack and drink vending machines in an office lobby" width={1600} height={1148} priority className="aspect-[4/3] w-full rounded-lg object-cover" />
+          <div className="absolute -bottom-5 left-5 flex gap-5 rounded-lg bg-[#1c1a17] px-5 py-4 text-white shadow-xl">
+            <div>
+              <p className="font-heading text-3xl font-extrabold leading-none">212</p>
+              <p className="text-xs text-white/70">machines placed</p>
             </div>
-          </div>
-          <div className="rounded-lg border border-[#e8e0d2] bg-white p-4">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#6b665c]">Snacks</p>
-            <p className="mt-1 font-heading text-2xl font-extrabold">40+ options</p>
-          </div>
-          <div className="rounded-lg border border-[#e8e0d2] bg-white p-4">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#6b665c]">Drinks</p>
-            <p className="mt-1 font-heading text-2xl font-extrabold">Cold, always</p>
+            <div className="border-l border-white/15 pl-5">
+              <p className="font-heading text-3xl font-extrabold leading-none">Same day</p>
+              <p className="text-xs text-white/70">service response</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-white py-12">
+      <section className="bg-white py-14">
         <div className="mx-auto max-w-6xl px-5">
           <h2 className="font-heading text-3xl font-extrabold uppercase">Pick the machine that fits your space</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {machines.map((m) => (
-              <div key={m.name} className="rounded-lg border border-[#e8e0d2] p-5">
-                <div className="flex h-28 items-end rounded bg-[#f1ebe0] p-3">
-                  <span className="rounded bg-[#d9531e] px-2 py-0.5 text-xs font-bold text-white">{m.note}</span>
+              <div key={m.name} className="overflow-hidden rounded-lg border border-[#e8e0d2]">
+                <div className="relative h-40">
+                  <Image src={m.img} alt="" width={800} height={600} className={`h-full w-full object-cover ${m.pos}`} />
+                  <span className="absolute bottom-3 left-3 rounded bg-[#d9531e] px-2 py-0.5 text-xs font-bold text-white">{m.note}</span>
                 </div>
-                <h3 className="mt-4 font-heading text-xl font-extrabold">{m.name}</h3>
-                <p className="mt-1 text-sm text-[#4a463f]">{m.fit}</p>
+                <div className="p-4">
+                  <h3 className="font-heading text-xl font-extrabold">{m.name}</h3>
+                  <p className="mt-1 text-sm text-[#4a463f]">{m.fit}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+      <DemoCredits
+        credits={[
+          { what: "Vending machines, Chico", by: "Frank Schulenburg", license: "CC BY-SA 4.0", href: "https://commons.wikimedia.org/wiki/File:Soft_drink_and_snack_vending_machines,_Chico_(2025)-L1007024.jpg" },
+          { what: "Snack machine", by: "Nenyedi", license: "Public domain", href: "https://commons.wikimedia.org/wiki/File:Snack_machine_3538.JPG" },
+        ]}
+      />
     </div>
   );
 }

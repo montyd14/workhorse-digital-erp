@@ -116,8 +116,8 @@ export default function HomePage() {
         <Eyebrow className="text-brand-text-on-dark">Industries we serve</Eyebrow>
         <H2>Phone-driven trades. Owner-operated. Under-marketed.</H2>
         <p className="mt-4 max-w-2xl text-lg text-cream/80">
-          We started with vending operators and expanded to the industries that run the same way: on the phone, on the
-          road, and without a marketing department.
+          We began with vending operators and now serve the industries that operate the same way: phone-driven,
+          field-based, and without a dedicated marketing team.
         </p>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {industries.map((i) => (
