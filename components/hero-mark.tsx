@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
  */
 export function HeroMark() {
   return (
-    <div className="relative mx-auto mt-8 w-full max-w-sm lg:mt-0 lg:max-w-md" aria-hidden="true">
+    <div className="relative mx-auto mt-10 w-full max-w-[260px] sm:max-w-sm lg:mt-0 lg:max-w-md" aria-hidden="true">
       {/* Shop-floor stripe backdrop */}
       <div
         className="absolute -inset-6 rounded-2xl opacity-20"
@@ -25,7 +25,8 @@ export function HeroMark() {
           width={1080}
           height={1080}
           priority
-          sizes="(min-width: 1024px) 448px, 90vw"
+          fetchPriority="high"
+          sizes="(min-width: 1024px) 448px, (min-width: 640px) 384px, 260px"
           className="block h-auto w-full"
         />
       </div>
