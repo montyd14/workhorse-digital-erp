@@ -9,8 +9,8 @@ export const site = {
   description:
     "We build websites, CRMs, dashboards, and call handling for owner-operated businesses. We build it first at no cost. Pay only if you love it.",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
-  phone: process.env.NEXT_PUBLIC_PHONE ?? "",
-  phoneDisplay: process.env.NEXT_PUBLIC_PHONE_DISPLAY ?? process.env.NEXT_PUBLIC_PHONE ?? "",
+  phone: process.env.NEXT_PUBLIC_PHONE ?? "+15612991774",
+  phoneDisplay: process.env.NEXT_PUBLIC_PHONE_DISPLAY ?? "(561) 299-1774",
   email: process.env.NEXT_PUBLIC_EMAIL ?? "hello@workhorsedigital.co",
   bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL ?? "/contact",
   serviceArea: {

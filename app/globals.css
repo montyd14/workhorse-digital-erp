@@ -10,7 +10,7 @@
   --color-brand-light: #f0a98e;
   /* Orange tuned for text: 4.5:1+ on cream/white, and on charcoal */
   --color-brand-text: #b8431a;
-  --color-brand-text-on-dark: #ec6f47;
+  --color-brand-text-on-dark: #ef7a55;
   --color-brand-tint: #fbe7de; /* light orange wash for section backgrounds */
   --color-gold: #d9a441;
   --color-gold-dark: #8a6410;
@@ -31,46 +31,49 @@
 @theme inline {
   --font-heading: var(--font-heading), "Arial Narrow", Impact, sans-serif;
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-hand: var(--font-hand), "Comic Sans MS", cursive;
 }
 
-:root {
-  color-scheme: light;
-}
+@layer base {
+  :root {
+    color-scheme: light;
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  background: var(--color-cream);
-  color: var(--color-ink);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  letter-spacing: 0.005em;
-  line-height: 1.02;
-  text-wrap: balance;
-}
-h1 {
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
-}
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    letter-spacing: 0.005em;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+  h1 {
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
 
-p {
-  text-wrap: pretty;
-}
+  p {
+    text-wrap: pretty;
+  }
 
-:focus-visible {
-  outline: 3px solid var(--color-brand);
-  outline-offset: 2px;
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 2px;
+  }
 }
 
 /* Prose styles for blog posts and legal pages (no plugin needed) */

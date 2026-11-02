@@ -9,7 +9,7 @@ export function StickyCta() {
   const pathname = usePathname();
   if (pathname === "/free-build" || pathname === "/thank-you" || pathname === "/contact") return null;
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-cream/95 p-2.5 backdrop-blur md:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-cream/95 p-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))] backdrop-blur md:hidden">
       <div className="mx-auto flex max-w-6xl gap-2">
         {telHref && (
           <a

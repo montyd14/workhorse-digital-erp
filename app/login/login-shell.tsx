@@ -16,7 +16,7 @@ export function LoginShell({
 }) {
   const tab = (active: boolean) =>
     `flex-1 rounded-md px-3 py-2 text-center text-sm font-bold transition-colors ${
-      active ? "bg-brand text-white" : "text-cream/70 hover:text-cream"
+      active ? "bg-brand-text text-white" : "text-cream/80 hover:text-cream"
     }`;
   return (
     <main className="flex flex-1 items-center justify-center bg-ink px-4 py-16">

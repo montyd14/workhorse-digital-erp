@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { serviceNames } from "@/content/services";
 import { work } from "@/content/work";
-import { Container, Eyebrow, H2 } from "./ui";
+import { Container, Eyebrow } from "./ui";
 
 /** "Websites we have built" section. Uses a screenshot when provided, otherwise a styled mock. */
 export function WorkShowcase() {
@@ -12,16 +12,17 @@ export function WorkShowcase() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <Eyebrow>Our work</Eyebrow>
-            <H2 className="!mt-0">
-              <span id="work-heading">Websites and systems we have built.</span>
-            </H2>
+            <h2 id="work-heading" className="font-hand text-3xl font-normal normal-case tracking-normal text-ink sm:text-4xl">
+              Websites and systems we&apos;ve built.
+            </h2>
           </div>
-          <Link href="/free-build" className="font-semibold text-rust underline underline-offset-4 hover:text-brand">
-            Yours could be next
+          <Link href="/free-build" className="font-hand text-xl text-brand-text underline decoration-wavy underline-offset-4 hover:text-brand">
+            Yours could be next &rarr;
           </Link>
         </div>
         <ul className="mt-8 grid gap-6 md:grid-cols-3">
-          {work.map((w) => {
+          {work.map((w, i) => {
+            const tilt = ["md:-rotate-1", "md:rotate-1", "md:-rotate-[0.5deg]"][i % 3];
             const card = (
               <>
                 <div className="overflow-hidden rounded-t-lg border-b border-line">
@@ -42,7 +43,7 @@ export function WorkShowcase() {
                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-text">{w.industry}</p>
                     {w.badge && <span className="rounded-full bg-cream px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-ink-muted">{w.badge}</span>}
                   </div>
-                  <h3 className="mt-1 text-2xl">{w.name}</h3>
+                  <h3 className="mt-1 font-hand text-2xl font-normal tracking-normal">{w.name}</h3>
                   <p className="mt-2 text-ink-soft">{w.blurb}</p>
                   <ul className="mt-3 flex flex-wrap gap-1.5">
                     {w.services.map((s) => (
@@ -54,7 +55,7 @@ export function WorkShowcase() {
                 </div>
               </>
             );
-            const cls = "group block h-full rounded-lg border border-line bg-cream transition-colors hover:border-brand";
+            const cls = `group block h-full rounded-lg border-2 border-ink bg-cream shadow-[6px_6px_0_0_#1e2328] transition-transform hover:-translate-y-1 ${tilt}`;
             return (
               <li key={w.slug}>
                 {w.url ? (
@@ -76,7 +77,7 @@ export function WorkShowcase() {
 /** Lightweight site mock used until a real screenshot is added. */
 function Mock({ name, industry, accent }: { name: string; industry: string; accent: string }) {
   return (
-    <div className="aspect-[16/10] w-full bg-paper p-4" aria-hidden="true">
+    <div className="aspect-[16/10] w-full bg-paper p-4 [background-image:radial-gradient(#1e232814_1px,transparent_1px)] [background-size:12px_12px]" aria-hidden="true">
       <div className="flex items-center justify-between">
         <span className="h-3 w-20 rounded" style={{ backgroundColor: accent }} />
         <span className="flex gap-2">
@@ -87,13 +88,13 @@ function Mock({ name, industry, accent }: { name: string; industry: string; acce
         </span>
       </div>
       <div className="mt-4 rounded-md p-4 text-cream" style={{ backgroundColor: "#1e2328" }}>
-        <p className="font-heading text-xl font-extrabold uppercase leading-none sm:text-2xl">{name}</p>
+        <p className="font-hand text-xl leading-none sm:text-2xl">{name}</p>
         <p className="mt-1 text-[0.65rem] uppercase tracking-[0.18em] text-cream/80">{industry}</p>
         <span className="mt-3 inline-block h-5 w-24 rounded" style={{ backgroundColor: accent }} />
       </div>
       <div className="mt-3 grid grid-cols-3 gap-2">
         {[0, 1, 2].map((i) => (
-          <div key={i} className="rounded-md border border-line bg-cream p-2">
+          <div key={i} className="rounded-md border border-dashed border-ink/40 bg-cream p-2">
             <span className="block h-6 w-6 rounded" style={{ backgroundColor: accent, opacity: 0.85 }} />
             <span className="mt-2 block h-1.5 w-full rounded bg-ink/15" />
             <span className="mt-1 block h-1.5 w-2/3 rounded bg-ink/15" />
