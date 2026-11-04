@@ -1,89 +1,52 @@
 # Phase 2: Internal ERP + CRM
 
-Phase 1 ships the public site and lead capture. Phase 2 turns the private `(app)` area into the internal system the
-team runs the agency from. This document records what is already in place and where each feature plugs in.
+The private area at `/dashboard`, `/crm`, and `/erp` is the company manager the team runs the agency from. It is
+built and working. This document explains what is in it, who sees what, and how to turn it on in production.
 
-## What exists today
+## What is built
 
-| Piece | Location | Status |
+| Area | Route | What it does |
 | --- | --- | --- |
-| Database schema | `prisma/schema.prisma` | Lead fully used; User, Client, Project, Activity, Invoice stubbed |
-| Auth.js config | `lib/auth.ts` | Credentials provider wired to User; disabled by `ENABLE_APP_LOGIN` |
-| Route protection | `proxy.ts` | Redirects `/dashboard`, `/crm`, `/erp` to `/login` when no session |
-| Role helpers | `lib/auth.ts` (`hasRole`, `requireRole`) | Ready for page and action guards |
-| Private layout | `app/(app)/layout.tsx` | Sidebar shell with placeholder nav |
-| Login pages | `app/login/` (client portal), `app/login/team/` (team / ERP) | Styled; team form appears when the flag is on |
+| Dashboard | `/dashboard` | New leads this week, pipeline counts by stage, active projects, outstanding invoices, follow-ups due, recent activity |
+| Sales: Leads | `/crm` | Every website lead, filterable by stage, search, and "assigned to me". Lead page shows contact, attribution, status and assignment forms, activity log with notes/calls/emails/tasks, and **Convert to client** |
+| Sales: Clients | `/crm/clients` | Client list and detail: editable details, projects, invoice records, activity log, add project, add invoice |
+| Operations: Projects | `/erp/projects` | Board by stage (planned, building, preview, approved, live, cancelled). Project page: status, type, owner, preview and live URLs, notes, timeline, activity log |
+| Billing | `/erp/billing` | Invoice records with outstanding, overdue, paid-this-month, and monthly recurring totals. Card charges still happen in Square; records are logged here |
+| Team | `/erp/team` | Add team members, set roles, reset passwords, deactivate |
+| Settings | `/erp/settings` | Read-only view of the server configuration and counts |
 
-## Schema
+**Convert to client** creates a Client from the lead, marks the lead Won, and creates one Project per tool the lead asked for (website, CRM, ERP, call handling).
 
-### Lead (live)
-
-Every public form submission. Fields: contact info, industry, needs, website, message, attribution (source page, UTM, referrer), `status`, `assignedToId`.
-
-`status` is the CRM pipeline:
-
-```
-new → contacted → discovery_booked → building → preview_sent → won | lost
-```
-
-### User
-
-Internal team members. `role` is one of `SALES`, `OPS`, `MANAGER`, `ADMIN`. `passwordHash` is bcrypt.
-
-### Client (stub)
-
-Created when a lead is won. Links back to the lead. TODO: billing contact, address, notes, portal access.
-
-### Project (stub)
-
-The build for a client: `type` (website, crm, erp, call_handling) and `status` (planned, building, preview, approved, live, cancelled). TODO: milestones, preview URL, approval and go-live dates, assigned team.
-
-### Activity (stub)
-
-Notes, calls, emails, and status changes on a lead or client, attributed to a user. TODO: attachments, follow-up reminders, email threading.
-
-### Invoice (stub)
-
-Record only. Card billing happens in Square outside the system. TODO: line items, recurring monthly schedule, Square reference sync.
+**Timeline stamps** fill in automatically when a project moves to building, preview, approved, or live.
 
 ## Roles
 
-| Role | Sees | Can |
+| Role | Can see | Can do |
 | --- | --- | --- |
-| SALES | Leads, own activities | Move leads through the pipeline, log activities |
-| OPS | Clients, projects | Update project status, log activities |
-| MANAGER | Everything above plus team and billing views | Assign leads, approve projects |
-| ADMIN | Everything | Manage users and settings |
+| Sales | Dashboard, Leads, Clients, Projects | Move leads, assign, convert, log activity, add projects |
+| Operations | Dashboard, Clients, Projects | Update projects, log activity, add projects |
+| Manager | All of the above plus Billing and Settings | Add and update invoice records |
+| Admin | Everything plus Team | Add, edit, deactivate team members |
 
-`hasRole(role, allowed)` treats higher ranks as superset (ADMIN passes any check). Use `requireRole([...])` at the top of a server component or action.
+Admin outranks Manager, Manager outranks Sales and Operations. Role checks run server-side in every page and action (`lib/guard.ts`); the sidebar only shows what the role can open, and direct URLs to a blocked area redirect to the dashboard with a notice.
 
-## Turning on login
+## Turning it on in production
 
-1. Set `AUTH_SECRET` and `ENABLE_APP_LOGIN=true`.
-2. Create the first admin user. A seed script is the cleanest way:
-   ```ts
-   // prisma/seed.ts (to be added)
-   await db.user.create({ data: { email, name, role: "ADMIN", passwordHash: await bcrypt.hash(password, 12) } });
-   ```
-3. `/login/team` renders the real form. The proxy allows `(app)` routes once the session cookie exists.
+1. In the hosting environment set `ENABLE_APP_LOGIN=true` and a strong `AUTH_SECRET` (`openssl rand -base64 32`).
+2. Set `ADMIN_EMAIL`, `ADMIN_PASSWORD` (8+ characters), and `ADMIN_NAME`, then run `npm run db:seed` once against the production database. This creates or updates the first Admin account.
+3. Redeploy. The **Team / ERP** tab on `/login` becomes a working sign-in form.
+4. Sign in as the admin, open **Team**, add the rest of the staff with their roles, and tell them to change their temporary passwords (you can set a new one from the Team page at any time).
+5. Remove `ADMIN_PASSWORD` from the environment once the account exists.
 
-## Where each feature plugs in
+With `ENABLE_APP_LOGIN=false` every private route redirects to the login page and the login page shows a placeholder, so nothing is reachable.
 
-| Feature | Route | Data | Notes |
-| --- | --- | --- | --- |
-| Dashboard | `app/(app)/dashboard` | Lead counts by status, projects by status, invoices due | Server component with `requireRole(["SALES","OPS"])` |
-| Leads / CRM | `app/(app)/crm` | Lead, Activity, User | Kanban by `status`; assign via `assignedToId`; convert to Client on `won` |
-| Clients | `app/(app)/crm/clients` | Client, Project, Invoice | Detail page with tabs |
-| Projects | `app/(app)/erp/projects` | Project | Build tracker; preview URL and approval flow |
-| Billing | `app/(app)/erp/billing` | Invoice | Record setup and monthly invoices; mark paid from Square |
-| Team | `app/(app)/erp/team` | User | ADMIN only; invite, deactivate, change role |
-| Settings | `app/(app)/erp/settings` | — | Notification email, pipeline stage labels, industries list |
+## Data model
 
-The nav list lives in `app/(app)/layout.tsx` (`appNav`). Replace the "Phase 2" badge as each section ships.
+See `prisma/schema.prisma`. Lead (pipeline), User (roles), Client, Project, Activity (notes, calls, emails, tasks, status changes), Invoice (records only).
 
-## Conventions to keep
+## Not built yet
 
-- Marketing pages stay fully static. Anything that reads the session goes inside `(app)` and behind `<Suspense>`.
-- Data access in server components or server actions only. No Prisma in client components or in `proxy.ts`.
-- Lead status changes should write an `Activity` row of type `status_change`.
-- The public lead API keeps working unchanged; the CRM reads the same table.
+- **Client portal.** The client tab on `/login` is a placeholder. Clients would need their own accounts, a project view with the preview link, and invoice history.
+- **Square sync.** Invoices are manual records. A webhook from Square could mark them paid automatically.
+- **Email from the CRM.** Activities log emails but do not send them.
+- **File attachments** on activities and projects.

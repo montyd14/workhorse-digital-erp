@@ -14,7 +14,7 @@ export function LoginForm() {
       });
     } catch (err) {
       if (err instanceof AuthError) {
-        redirect("/login/team?error=1");
+        redirect(`/login/team?error=${err.type === "CredentialsSignin" ? "CredentialsSignin" : "Unknown"}`);
       }
       throw err;
     }

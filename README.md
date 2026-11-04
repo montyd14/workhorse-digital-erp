@@ -71,7 +71,7 @@ Hostinger's Node.js hosting runs `npm install`, `npm run build`, then `npm start
    - `DATABASE_URL` from step 1.
    - SMTP settings for lead emails. Use a Hostinger mailbox: host `smtp.hostinger.com`, port `465`.
    - `AUTH_SECRET`: run `openssl rand -base64 32` locally and paste the result.
-   - `ENABLE_APP_LOGIN=false` until Phase 2.
+   - `ENABLE_APP_LOGIN=true` plus `ADMIN_EMAIL` / `ADMIN_PASSWORD` / `ADMIN_NAME` to open the team login (see PHASE2.md).
    - `NEXT_PUBLIC_GA_ID` and `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` once you have them.
 4. **Set the commands** if Hostinger asks: build `npm run build`, start `npm start`. Node version 22.
 5. **Create the tables.** On first deploy, run the migration against the production database. Either:
@@ -90,3 +90,11 @@ Notes:
 ## CI
 
 GitHub Actions runs lint, type check, and a production build on every push and pull request.
+
+## Internal ERP / CRM (Phase 2)
+
+The private area behind **Log In → Team / ERP** is built: dashboard, lead pipeline, clients, projects board, billing
+records, team and roles. See [PHASE2.md](PHASE2.md) for what each role sees and how to enable sign-in in production.
+
+Locally: set `ENABLE_APP_LOGIN=true`, `AUTH_SECRET`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `ADMIN_NAME` in `.env`, run
+`npm run db:seed`, then sign in at `/login/team`.

@@ -78,17 +78,22 @@ model User {
   isActive     Boolean    @default(true)
   leads        Lead[]
   activities   Activity[]
+  projects     Project[]  @relation("ProjectOwner")
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
 }
 
 /// A won lead becomes a Client.
-/// TODO Phase 2: billing contact, address, notes, portal access.
 model Client {
-  id        String     @id @default(cuid())
-  name      String
-  industry  String?
-  leadId    String?    @unique
+  id          String     @id @default(cuid())
+  name        String
+  industry    String?
+  contactName String?
+  email       String?
+  phone       String?
+  address     String?
+  notes       String?    @db.Text
+  leadId      String?    @unique
   lead      Lead?      @relation(fields: [leadId], references: [id], onDelete: SetNull)
   projects  Project[]
   invoices  Invoice[]
@@ -98,7 +103,6 @@ model Client {
 }
 
 /// The build we do for a client (website, CRM, dashboard, call handling).
-/// TODO Phase 2: milestones, preview URL, approval date, go-live date, assigned team.
 model Project {
   id        String   @id @default(cuid())
   clientId  String
@@ -107,34 +111,50 @@ model Project {
   /// e.g. website | crm | erp | call_handling
   type      String
   /// e.g. planned | building | preview | approved | live | cancelled
-  status    String   @default("planned")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  status     String    @default("planned")
+  previewUrl String?
+  liveUrl    String?
+  notes      String?   @db.Text
+  ownerId    String?
+  owner      User?     @relation("ProjectOwner", fields: [ownerId], references: [id], onDelete: SetNull)
+  startedAt  DateTime?
+  previewAt  DateTime?
+  approvedAt DateTime?
+  liveAt     DateTime?
+  activities Activity[]
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 
   @@index([clientId])
+  @@index([status])
 }
 
-/// Notes, calls, and emails logged against a lead or client.
-/// TODO Phase 2: attachments, reminders/follow-up dates, email threading.
+/// Notes, calls, emails, tasks, and status changes logged against a lead, client, or project.
 model Activity {
   id        String   @id @default(cuid())
-  /// note | call | email | status_change
+  /// note | call | email | task | status_change
   type      String
   body      String   @db.Text
   leadId    String?
   lead      Lead?    @relation(fields: [leadId], references: [id], onDelete: Cascade)
   clientId  String?
   client    Client?  @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  projectId String?
+  project   Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
   userId    String?
   user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  /// For type = task: when it is due and whether it is done
+  dueAt     DateTime?
+  done      Boolean  @default(false)
   createdAt DateTime @default(now())
 
   @@index([leadId])
   @@index([clientId])
+  @@index([projectId])
+  @@index([dueAt])
 }
 
 /// Invoice records only. Card billing happens in Square outside this system.
-/// TODO Phase 2: line items, recurring monthly schedule, Square payment reference sync.
 model Invoice {
   id          String    @id @default(cuid())
   clientId    String
@@ -145,8 +165,10 @@ model Invoice {
   currency    String    @default("USD")
   /// draft | sent | paid | void
   status      String    @default("draft")
+  description String?
   externalRef String?
   issuedAt    DateTime?
+  dueAt       DateTime?
   paidAt      DateTime?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt

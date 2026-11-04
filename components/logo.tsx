@@ -7,9 +7,9 @@ const SUB = "DIGITAL CO.";
  * Header/footer lockup. The small "DIGITAL CO." line is letter-spaced to exactly
  * the width of "Workhorse" above it, so the two lines form a clean block beside the mark.
  */
-export function Logo({ onDark = false, className = "" }: { onDark?: boolean; className?: string }) {
+export function Logo({ onDark = false, className = "", href = "/" }: { onDark?: boolean; className?: string; href?: string }) {
   return (
-    <Link href="/" className={`flex items-center gap-2.5 ${className}`}>
+    <Link href={href} className={`flex items-center gap-2.5 ${className}`}>
       <Image src="/brand/horseshoe-orange.png" alt="" width={36} height={36} priority className="h-9 w-9 shrink-0" />
       <span className="flex flex-col leading-none">
         <span className={`font-heading text-[1.35rem] font-extrabold uppercase tracking-tight ${onDark ? "text-cream" : "text-ink"}`}>

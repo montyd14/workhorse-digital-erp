@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { APP_LOGIN_ENABLED } from "@/lib/auth";
 import { LoginForm } from "../login-form";
 import { LoginShell } from "../login-shell";
+import { LoginError } from "../login-error";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Team Login",
@@ -13,7 +15,12 @@ export default function TeamLoginPage() {
   return (
     <LoginShell mode="team" title="Team sign in" blurb="Leads, clients, projects, and billing. Staff only.">
       {APP_LOGIN_ENABLED ? (
-        <LoginForm />
+        <>
+          <Suspense fallback={null}>
+            <LoginError />
+          </Suspense>
+          <LoginForm />
+        </>
       ) : (
         <>
           <p className="mt-3 text-cream/80">The company manager is being set up. Sign-in opens with Phase 2.</p>
