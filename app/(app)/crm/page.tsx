@@ -47,7 +47,23 @@ async function Content({ searchParams }: PageProps<"/crm">) {
 
   return (
     <>
-      <PageHeader title="Leads" blurb={`${total} total · showing ${leads.length}`} />
+      <PageHeader
+        title="Leads"
+        blurb="Every request that comes through the website, newest first."
+        actions={
+          <p className="text-sm text-ink-muted">
+            {status || q || mine ? (
+              <>
+                Showing <span className="font-semibold text-ink">{leads.length}</span> of {total}
+              </>
+            ) : (
+              <>
+                <span className="font-semibold text-ink">{total}</span> lead{total === 1 ? "" : "s"} · {count("NEW")} new
+              </>
+            )}
+          </p>
+        }
+      />
       <Notice error={sp.error as string | undefined} ok={sp.ok as string | undefined} />
 
       <div className="mb-4 rounded-lg border border-line bg-paper">
