@@ -49,19 +49,24 @@ async function Content({ searchParams }: PageProps<"/crm">) {
     <>
       <PageHeader
         title="Leads"
-        blurb="Every request that comes through the website, newest first."
+        blurb="Inbound inquiries from the website, sorted by most recent."
         actions={
-          <p className="text-sm text-ink-muted">
-            {status || q || mine ? (
-              <>
-                Showing <span className="font-semibold text-ink">{leads.length}</span> of {total}
-              </>
-            ) : (
-              <>
-                <span className="font-semibold text-ink">{total}</span> lead{total === 1 ? "" : "s"} · {count("NEW")} new
-              </>
+          <div className="flex gap-6 text-sm">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-ink-muted">Total</p>
+              <p className="font-heading text-xl font-extrabold text-ink">{total}</p>
+            </div>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-ink-muted">Awaiting contact</p>
+              <p className="font-heading text-xl font-extrabold text-brand-text">{count("NEW")}</p>
+            </div>
+            {(status || q || mine) && (
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-ink-muted">In view</p>
+                <p className="font-heading text-xl font-extrabold text-ink">{leads.length}</p>
+              </div>
             )}
-          </p>
+          </div>
         }
       />
       <Notice error={sp.error as string | undefined} ok={sp.ok as string | undefined} />
