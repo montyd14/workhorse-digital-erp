@@ -20,7 +20,7 @@ export function FinalCta({
             width={1024}
             height={1024}
             aria-hidden="true"
-            className="pointer-events-none absolute -right-10 -top-10 w-56 opacity-15 sm:w-72 lg:-right-6 lg:w-80"
+            className="pointer-events-none absolute right-6 top-1/2 hidden w-56 -translate-y-1/2 opacity-15 md:block lg:right-16 lg:w-72"
           />
           <div className="relative max-w-2xl">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-cream">Ready when you are</p>
